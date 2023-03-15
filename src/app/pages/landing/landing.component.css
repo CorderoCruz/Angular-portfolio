@@ -7,15 +7,17 @@
   width: 100%;
   height: 100%;
   position: absolute;
+
+  z-index: -1;
 }
 
 img {
   height: 100%;
   width: 100%;
   position: absolute;
-  object-fit: cover;
+  object-fit: fill;
   background-position: center;
-  z-index: -1;
+  z-index: -2;
 }
 
 main {
@@ -23,14 +25,27 @@ main {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-style: italic;
 }
 
 .main-content {
-  backdrop-filter: blur(0.6em);
   color: white;
   padding: 5em 2em;
   border-radius: 10px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
+  overflow-x: hidden;
+  backdrop-filter: blur(0.2em);
+  animation: 1s ease-out 0s 1 slideInLeft;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .greeting {
@@ -44,6 +59,7 @@ h1 {
   font-size: 4rem;
   font-weight: 400;
   text-align: center;
+  letter-spacing: -4px;
 }
 
 h3 {
@@ -111,6 +127,25 @@ h3 {
 
 @media (max-width: 900px) {
   .main-content {
-    margin: 0 20px;
+    margin: 0 10px;
   }
-} ;
+  img {
+    object-fit: cover;
+    animation: 1s ease-out 0s 1 slideInRight;
+  }
+
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .main-content {
+    padding: 5em 1em;
+  }
+}
