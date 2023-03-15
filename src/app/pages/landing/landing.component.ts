@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./landing.component.css"],
 })
 export class LandingComponent {
-  backgroundColor: string = "rgb(227,227,227)";
-  imageSrc: string = "../../../assets/images/Cruz-logos.jpeg";
-  linkColor: string = "black";
+  backgroundColor: string = "rgba(0,  0, 0 , .7)";
+  imageSrc: string = "../../../assets/images/Cruz-logos_white.png";
+  linkColor: string = "white";
 }

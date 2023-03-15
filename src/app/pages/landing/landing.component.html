@@ -1,5 +1,29 @@
-<app-header
-  [backgroundColor]="backgroundColor"
-  [imageSrc]="imageSrc"
-  [linkColor]="linkColor"
-></app-header>
+<div class="landing-container">
+  <app-header
+    [backgroundColor]="backgroundColor"
+    [imageSrc]="imageSrc"
+    [linkColor]="linkColor"
+  ></app-header>
+
+  <div class="image-container">
+    <img
+      src="../../../assets//images/landing-background-mountains.jpg"
+      alt=""
+    />
+  </div>
+
+  <main>
+    <div class="main-content">
+      <div class="greeting">
+        <h1>Cruz Cordero</h1>
+        <h3>
+          Hello, I'm Cruz. I am a full stack software engineer with a focus on
+          the MEAN stack.
+        </h3>
+        <a routerLink="/about"
+          ><button class="about-me-btn">About me</button></a
+        >
+      </div>
+    </div>
+  </main>
+</div>
