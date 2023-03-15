@@ -9,7 +9,7 @@ import { AppComponent } from "./app.component";
 
 import { firebaseConfig } from "../environment";
 import { HeaderComponent } from "./components/header/header.component";
-import { LandingComponent } from "./components/landing/landing.component";
+import { LandingComponent } from "./pages/landing/landing.component";
 
 // Material
 
@@ -18,17 +18,44 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
-import { faFonticons } from "@fortawesome/free-brands-svg-icons";
+import { BlogComponent } from "./pages/blog/blog.component";
+import { AboutComponent } from "./pages/about/about.component";
+import { ProjectsComponent } from "./pages/projects/projects.component";
+import { ContactComponent } from "./pages/contact/contact.component";
 
 const routes: Routes = [
   {
     path: "",
     component: LandingComponent,
   },
+  {
+    path: "projects",
+    component: ProjectsComponent,
+  },
+  {
+    path: "blog",
+    component: BlogComponent,
+  },
+  {
+    path: "about",
+    component: AboutComponent,
+  },
+  {
+    path: "contact",
+    component: ContactComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LandingComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LandingComponent,
+    BlogComponent,
+    AboutComponent,
+    ProjectsComponent,
+    ContactComponent,
+  ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),

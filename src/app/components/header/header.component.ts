@@ -9,6 +9,9 @@ import { ViewChild } from "@angular/core";
 })
 export class HeaderComponent {
   @Input() backgroundColor: string;
+  @Input() imageSrc: string;
+  @Input() linkColor: string;
+
   faBars: IconDefinition = faBars;
   faX: IconDefinition = faX;
 

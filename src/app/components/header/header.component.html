@@ -1,8 +1,9 @@
 <header [style]="{ 'background-color': backgroundColor }">
   <div class="image-container">
-    <img src="../../../assets/images/Cruz-logos.jpeg" alt="" />
+    <img [src]="imageSrc" alt="" />
   </div>
   <button
+    [ngStyle]="{ color: linkColor }"
     aria-controls="navigation"
     (click)="toggleNav($event)"
     [ariaExpanded]="activeNav"
@@ -15,10 +16,37 @@
     data-visible="false"
     [ngClass]="activeNav ? 'active' : ''"
   >
-    <a [ariaHidden]="activeNav" routerLink="">Home</a>
-    <a [ariaHidden]="activeNav" routerLink="">Projects</a>
-    <a [ariaHidden]="activeNav" routerLink="">Blog</a>
-    <a [ariaHidden]="activeNav" routerLink="">About</a>
-    <a [ariaHidden]="activeNav" routerLink="">Contact</a>
+    <a
+      [ngStyle]="{ color: linkColor }"
+      class="link"
+      [ariaHidden]="activeNav"
+      routerLink="/projects"
+      routerLinkActive="active-link"
+      >Projects</a
+    >
+    <a
+      [ngStyle]="{ color: linkColor }"
+      class="link"
+      [ariaHidden]="activeNav"
+      routerLink="/blog"
+      routerLinkActive="active-link"
+      >Blog</a
+    >
+    <a
+      [ngStyle]="{ color: linkColor }"
+      class="link"
+      [ariaHidden]="activeNav"
+      routerLink="/about"
+      routerLinkActive="active-link"
+      >About</a
+    >
+    <a
+      [ngStyle]="{ color: linkColor }"
+      class="link"
+      [ariaHidden]="activeNav"
+      routerLink="/contact"
+      routerLinkActive="active-link"
+      >Contact</a
+    >
   </nav>
 </header>

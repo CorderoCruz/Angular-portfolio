@@ -7,4 +7,5 @@ import { Component } from "@angular/core";
 })
 export class LandingComponent {
   backgroundColor: string = "rgb(227,227,227)";
+  imageSrc: string = "../../../assets/images/Cruz-logos.jpeg";
 }
