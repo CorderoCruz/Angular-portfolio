@@ -91,8 +91,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "portfolio:build:production",
+            "firebaseProject": "cruz-cor",
+            "firebaseHostingSite": "cruz-cor"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "45121499-c260-42ac-a1ac-f3e7bec67aba"
   }
 }

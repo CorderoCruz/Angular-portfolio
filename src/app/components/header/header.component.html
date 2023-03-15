@@ -1,0 +1,24 @@
+<header [style]="{ 'background-color': backgroundColor }">
+  <div class="image-container">
+    <img src="../../../assets/images/Cruz-logos.jpeg" alt="" />
+  </div>
+  <button
+    aria-controls="navigation"
+    (click)="toggleNav($event)"
+    [ariaExpanded]="activeNav"
+  >
+    <fa-icon *ngIf="!activeNav" [icon]="faBars"></fa-icon>
+    <fa-icon *ngIf="activeNav" [icon]="faX"></fa-icon>
+  </button>
+  <nav
+    id="navigation"
+    data-visible="false"
+    [ngClass]="activeNav ? 'active' : ''"
+  >
+    <a [ariaHidden]="activeNav" routerLink="">Home</a>
+    <a [ariaHidden]="activeNav" routerLink="">Projects</a>
+    <a [ariaHidden]="activeNav" routerLink="">Blog</a>
+    <a [ariaHidden]="activeNav" routerLink="">About</a>
+    <a [ariaHidden]="activeNav" routerLink="">Contact</a>
+  </nav>
+</header>

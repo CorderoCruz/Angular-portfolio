@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cruz-cor"
+  },
+  "targets": {
+    "cruz-cor": {
+      "hosting": {
+        "portfolio": [
+          "cruz-cor"
+        ]
+      }
+    }
+  }
+}
