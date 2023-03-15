@@ -40,7 +40,7 @@ span {
 
 .link.active-link {
   text-decoration: underline;
-  text-underline-offset: 20px;
+  text-underline-offset: 0.6em;
 }
 
 @media (max-width: 900px) {
