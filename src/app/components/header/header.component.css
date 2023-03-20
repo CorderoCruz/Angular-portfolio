@@ -2,13 +2,15 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 10px 60px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.038);
+  box-shadow: var(--shadow);
   align-items: center;
   z-index: 10000;
   position: fixed;
+  height: 12vh;
   right: 0;
   left: 0;
   top: 0;
+  transition: 0.5s;
 }
 
 .image-container {
@@ -28,6 +30,7 @@ nav {
   display: flex;
   gap: 40px;
   align-items: center;
+  height: 100%;
 }
 
 .link {
@@ -42,6 +45,7 @@ nav {
 
 button {
   display: none;
+  transition: 1s;
 }
 
 span {
@@ -54,18 +58,22 @@ span {
 }
 
 @media (max-width: 900px) {
+  header {
+    padding: 10px 5px;
+  }
   nav {
     position: fixed;
     inset: 0 0 0 40%;
     flex-direction: column;
     gap: 2em;
     padding: min(30vh, 10rem) 2rem;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0.461);
     backdrop-filter: blur(1em);
     transform: translateX(100%);
     overflow-x: hidden;
     z-index: 10;
-    transition: transform 0.3s ease-out;
+
+    transition: transform 0.2s ease-out;
   }
 
   nav a {
@@ -74,33 +82,30 @@ span {
 
   nav.active {
     transform: translateX(0%);
+    box-shadow: var(--shadow);
   }
 
   button {
-    position: absolute;
-    top: 1.8rem;
-    z-index: 100;
     border: none;
-    display: inline-block;
-    right: 3rem;
+    display: block;
     background-color: transparent;
     width: 2rem;
+    z-index: 100;
+    transition: 0.1s;
+    margin-right: 2rem;
     cursor: pointer;
   }
 
   @supports (backdrop-filter: blur(1em)) {
     nav {
-      background: hsl(0 0% 0% / 0.5);
+      background: rgba(255, 255, 255, 0.846);
       backdrop-filter: blur(0.5em);
     }
   }
 }
 
 @media (max-width: 380px) {
-  header {
-    padding: 10px 20px;
-  }
   button {
-    right: 2rem;
+    right: 1rem;
   }
 }

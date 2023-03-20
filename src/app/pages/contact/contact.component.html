@@ -2,4 +2,79 @@
   [backgroundColor]="backgroundColor"
   [imageSrc]="imageSrc"
   [linkColor]="linkColor"
+  [menu]="menu"
+  [boxShadow]="boxShadow"
 ></app-header>
+
+<div *ngIf="!(loading$ | async)" class="background-container">
+  <div class="background"></div>
+</div>
+
+<div class="spinner-container" *ngIf="loading$ | async">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!(loading$ | async)" class="contact-container">
+  <div class="content-container">
+    <div class="box">
+      <h2>Reach me!</h2>
+
+      <div class="reach-me-content">
+        <div class="email-section">
+          <h4>Email</h4>
+          <a href="mailto:cruzcordero7600@gmail.com"
+            >cruzcordero7600@gmail.com</a
+          >
+        </div>
+        <div class="phone-section">
+          <h4>Phone</h4>
+          <a href="tel:9512617552">(951)-261-7552</a>
+        </div>
+        <div class="icon-section">
+          <h4>Other ways to reach me!</h4>
+          <div class="icons">
+            <a href="#email" (click)="activateMail($event)"
+              ><fa-icon
+                class="fa-xl"
+                [icon]="faMessage"
+                style="color: rgb(0, 0, 0)"
+              ></fa-icon
+            ></a>
+            <a href="https://github.com/CorderoCruz" target="_blank"
+              ><fa-icon
+                class="fa-xl"
+                [icon]="faGithub"
+                style="color: rgb(0, 0, 0)"
+              ></fa-icon
+            ></a>
+            <a href=""
+              ><fa-icon
+                class="fa-xl"
+                [icon]="faLinkedin"
+                style="color: rgb(0, 0, 0)"
+              ></fa-icon
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div #email class="box  {{ activeMail ? 'active' : '' }}">
+      <h2>Send me a message!</h2>
+      <form action="">
+        <div class="input-section">
+          <label for="name">Name</label>
+          <input type="text" name="name" />
+        </div>
+        <div class="input-section">
+          <label for="subject">Subject</label>
+          <input type="text" name="subject" />
+        </div>
+        <div class="input-section">
+          <label for="inquiry">Inquiry</label>
+          <textarea type="text" name="inquiry"></textarea>
+        </div>
+      </form>
+    </div>
+    <p class="hide">Psst... this is the email form!</p>
+  </div>
+</div>

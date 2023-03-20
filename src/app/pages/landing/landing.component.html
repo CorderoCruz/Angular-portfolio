@@ -3,17 +3,22 @@
     [backgroundColor]="backgroundColor"
     [imageSrc]="imageSrc"
     [linkColor]="linkColor"
+    [menu]="menu"
+    [boxShadow]="boxShadow"
   ></app-header>
 
-  <div class="image-container">
+  <div *ngIf="!(loading$ | async)" class="image-container">
     <img
-      src="../../../assets//images/landing-background-mountains.jpg"
-      alt=""
+      [src]="landingBackground"
+      alt="landing bcakground image of icy mountains"
     />
   </div>
-
   <main>
-    <div class="main-content">
+    <!-- loading animation -->
+    <div *ngIf="loading$ | async" class="spinner"></div>
+    <!-- loading animation -->
+
+    <div *ngIf="!(loading$ | async)" class="main-content">
       <div class="greeting">
         <h1>Cruz Cordero</h1>
         <h3>

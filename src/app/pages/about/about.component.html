@@ -2,4 +2,31 @@
   [backgroundColor]="backgroundColor"
   [imageSrc]="imageSrc"
   [linkColor]="linkColor"
+  [menu]="menu"
+  [boxShadow]="boxShadow"
 ></app-header>
+<div class="about-page-container">
+  <!-- background -->
+  <div *ngIf="!(loading$ | async)" class="background-left"></div>
+  <div *ngIf="!(loading$ | async)" class="background-right"></div>
+  <!-- background -->
+
+  <div
+    class="main-content {{ (loading$ | async) ? 'loading' : '' }}"
+    (scroll)="onScroll()"
+  >
+    <!-- loading animation -->
+    <div *ngIf="loading$ | async" class="spinner"></div>
+    <!-- loading animation -->
+    <div *ngIf="!(loading$ | async)" class="main-container" #main>
+      <div class="main-left">
+        <div class="image-container">
+          <img [src]="profilePicture" alt="" />
+        </div>
+      </div>
+      <div class="main-right">
+        <h2>About</h2>
+      </div>
+    </div>
+  </div>
+</div>

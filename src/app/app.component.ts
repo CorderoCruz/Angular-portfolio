@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { GoogleAuthProvider } from "@angular/fire/auth";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Store } from "@ngrx/store";
+import { LoadingActions } from "./store/shared/loading/loading.actions";
 
 @Component({
   selector: "app-root",
@@ -11,7 +10,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class AppComponent implements OnInit {
   title = "portfolio";
 
-  constructor() {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {}
 }

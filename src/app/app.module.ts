@@ -22,6 +22,10 @@ import { BlogComponent } from "./pages/blog/blog.component";
 import { AboutComponent } from "./pages/about/about.component";
 import { ProjectsComponent } from "./pages/projects/projects.component";
 import { ContactComponent } from "./pages/contact/contact.component";
+import { StoreModule } from "@ngrx/store";
+import { loadingReducer } from "./store/shared/loading/loading.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { LoadingEffects } from "./store/shared/loading/loading.effects";
 
 const routes: Routes = [
   {
@@ -59,16 +63,13 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
     RouterModule.forRoot(routes),
-    MatSidenavModule,
-    MatTabsModule,
-    MatToolbarModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
     FontAwesomeModule,
-    FontAwesomeModule,
+    StoreModule.forRoot({ pageLoading: loadingReducer }),
+    EffectsModule.forRoot([LoadingEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
