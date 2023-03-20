@@ -58,21 +58,59 @@
         </div>
       </div>
     </div>
-    <div #email class="box  {{ activeMail ? 'active' : '' }}">
+    <div #mail class="box  {{ activeMail ? 'active' : '' }}">
       <h2>Send me a message!</h2>
-      <form action="">
+      <p
+        [style]="{ color: contactForm.status === 'INVALID' ? 'red' : 'green' }"
+      >
+        All fields are required
+      </p>
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
         <div class="input-section">
           <label for="name">Name</label>
-          <input type="text" name="name" />
+          <input type="text" name="name" formControlName="name" />
+          <p *ngIf="name?.touched && name?.invalid" style="color: red">
+            Name is required
+          </p>
+        </div>
+        <div class="input-section">
+          <label for="email">Email</label>
+          <input type="text" name="email" formControlName="email" />
+          <p *ngIf="email?.touched && email?.invalid" style="color: red">
+            Email is required
+          </p>
         </div>
         <div class="input-section">
           <label for="subject">Subject</label>
-          <input type="text" name="subject" />
+          <input type="text" name="subject" formControlName="subject" />
+          <p *ngIf="subject?.touched && subject?.invalid" style="color: red">
+            Subject is required
+          </p>
         </div>
         <div class="input-section">
           <label for="inquiry">Inquiry</label>
-          <textarea type="text" name="inquiry"></textarea>
+          <textarea
+            type="text"
+            name="inquiry"
+            formControlName="inquiry"
+          ></textarea>
+          <p *ngIf="inquiry?.touched && inquiry?.invalid" style="color: red">
+            Inquiry is required
+          </p>
         </div>
+        <button
+          [style]="{
+            'background-color': formSent
+              ? 'green'
+              : contactForm.status !== 'INVALID'
+              ? 'black'
+              : 'rgba(128, 128, 128, 0.464)',
+            color: 'white'
+          }"
+          [disabled]="contactForm.status == 'INVALID' || formSent"
+        >
+          {{ formSent ? "Form Sent!" : "Submit" }}
+        </button>
       </form>
     </div>
     <p class="hide">Psst... this is the email form!</p>

@@ -26,6 +26,7 @@ import { StoreModule } from "@ngrx/store";
 import { loadingReducer } from "./store/shared/loading/loading.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { LoadingEffects } from "./store/shared/loading/loading.effects";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -65,6 +66,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
     FontAwesomeModule,

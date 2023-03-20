@@ -6,4 +6,8 @@ import {} from "rxjs";
 })
 export class ContactService {
   constructor() {}
+
+  submitContactForm(form: any): void {
+    console.log(form);
+  }
 }
