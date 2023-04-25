@@ -1,118 +1,158 @@
-<app-header
-  [backgroundColor]="backgroundColor"
-  [imageSrc]="imageSrc"
-  [linkColor]="linkColor"
-  [menu]="menu"
-  [boxShadow]="boxShadow"
-></app-header>
+<div class="contact-container" id="contact">
+  <div class="contact-background">
+    <div class="content-container">
+      <div class="box">
+        <h2>Reach me!</h2>
 
-<div *ngIf="!(loading$ | async)" class="background-container">
-  <div class="background"></div>
-</div>
-
-<div class="spinner-container" *ngIf="loading$ | async">
-  <div class="spinner"></div>
-</div>
-
-<div *ngIf="!(loading$ | async)" class="contact-container">
-  <div class="content-container">
-    <div class="box">
-      <h2>Reach me!</h2>
-
-      <div class="reach-me-content">
-        <div class="email-section">
-          <h4>Email</h4>
-          <a href="mailto:cruzcordero7600@gmail.com"
-            >cruzcordero7600@gmail.com</a
-          >
-        </div>
-        <div class="phone-section">
-          <h4>Phone</h4>
-          <a href="tel:9512617552">(951)-261-7552</a>
-        </div>
-        <div class="icon-section">
-          <h4>Other ways to reach me!</h4>
-          <div class="icons">
-            <a href="#email" (click)="activateMail($event)"
-              ><fa-icon
-                class="fa-xl"
-                [icon]="faMessage"
-                style="color: rgb(0, 0, 0)"
-              ></fa-icon
-            ></a>
-            <a href="https://github.com/CorderoCruz" target="_blank"
-              ><fa-icon
-                class="fa-xl"
-                [icon]="faGithub"
-                style="color: rgb(0, 0, 0)"
-              ></fa-icon
-            ></a>
-            <a href=""
-              ><fa-icon
-                class="fa-xl"
-                [icon]="faLinkedin"
-                style="color: rgb(0, 0, 0)"
-              ></fa-icon
-            ></a>
+        <div class="reach-me-content">
+          <div class="email-section">
+            <h4>Email</h4>
+            <a href="mailto:cruzcordero7600@gmail.com"
+              >cruzcordero7600@gmail.com</a
+            >
+          </div>
+          <div class="phone-section">
+            <h4>Phone</h4>
+            <a href="tel:9512617552">(951)-261-7552</a>
+          </div>
+          <div class="icon-section">
+            <h4>Other ways to reach me!</h4>
+            <div class="icons">
+              <a #inboxIcon
+                ><fa-icon
+                  class="fa-xl"
+                  [icon]="faMessage"
+                  style="color: rgb(0, 0, 0)"
+                ></fa-icon
+              ></a>
+              <a href="https://github.com/CorderoCruz" target="_blank"
+                ><fa-icon
+                  class="fa-xl"
+                  [icon]="faGithub"
+                  style="color: rgb(0, 0, 0)"
+                ></fa-icon
+              ></a>
+              <a href=""
+                ><fa-icon
+                  class="fa-xl"
+                  [icon]="faLinkedin"
+                  style="color: rgb(0, 0, 0)"
+                ></fa-icon
+              ></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div #mail class="box  {{ activeMail ? 'active' : '' }}">
-      <h2>Send me a message!</h2>
-      <p
-        [style]="{ color: contactForm.status === 'INVALID' ? 'red' : 'green' }"
-      >
-        All fields are required
-      </p>
-      <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
-        <div class="input-section">
-          <label for="name">Name</label>
-          <input type="text" name="name" formControlName="name" />
-          <p *ngIf="name?.touched && name?.invalid" style="color: red">
-            Name is required
-          </p>
-        </div>
-        <div class="input-section">
-          <label for="email">Email</label>
-          <input type="text" name="email" formControlName="email" />
-          <p *ngIf="email?.touched && email?.invalid" style="color: red">
-            Email is required
-          </p>
-        </div>
-        <div class="input-section">
-          <label for="subject">Subject</label>
-          <input type="text" name="subject" formControlName="subject" />
-          <p *ngIf="subject?.touched && subject?.invalid" style="color: red">
-            Subject is required
-          </p>
-        </div>
-        <div class="input-section">
-          <label for="inquiry">Inquiry</label>
-          <textarea
-            type="text"
-            name="inquiry"
-            formControlName="inquiry"
-          ></textarea>
-          <p *ngIf="inquiry?.touched && inquiry?.invalid" style="color: red">
-            Inquiry is required
-          </p>
-        </div>
-        <button
+      <div class="box  {{ (activeMail | async) ? 'active' : '' }}">
+        <h2>Send me a message!</h2>
+        <span
           [style]="{
-            'background-color': formSent
-              ? 'green'
-              : contactForm.status !== 'INVALID'
-              ? 'black'
-              : 'rgba(128, 128, 128, 0.464)',
-            color: 'white'
+            color:
+              contactForm.status === 'INVALID' ? 'rgb(255, 0, 0)' : 'green',
+            display:
+              (contactForm.touched &&
+                contactForm.status === 'INVALID' &&
+                name?.touched &&
+                name?.invalid) ||
+              (email?.touched && email?.invalid) ||
+              (subject?.touched && subject?.invalid) ||
+              (inquiry?.touched && inquiry?.invalid)
+                ? 'block'
+                : 'none',
+            'font-weight': 'light',
+            'font-size': 'small'
           }"
-          [disabled]="contactForm.status == 'INVALID' || formSent"
         >
-          {{ formSent ? "Form Sent!" : "Submit" }}
-        </button>
-      </form>
+          All inputs are not valid
+        </span>
+
+        <form [formGroup]="contactForm" (ngSubmit)="submitForm($event)">
+          <div class="input-section">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              formControlName="name"
+              placeholder="Please input name"
+              [style]="{
+                'box-shadow':
+                  name?.touched && name?.invalid
+                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
+                    : 'var(--shadow)'
+              }"
+            />
+          </div>
+          <div class="input-section">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              formControlName="email"
+              placeholder="Please input email"
+              [style]="{
+                'box-shadow':
+                  email?.touched && email?.invalid
+                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
+                    : 'var(--shadow)'
+              }"
+            />
+            <span
+              *ngIf="email?.touched && email?.invalid && email?.errors?.['pattern']"
+              style="
+                color: rgb(255, 0, 0);
+                font-weight: lighter;
+                font-size: small;
+              "
+            >
+              Must be a valid email address
+            </span>
+          </div>
+          <div class="input-section">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              name="subject"
+              formControlName="subject"
+              placeholder="Please input subject"
+              [style]="{
+                'box-shadow':
+                  subject?.touched && subject?.invalid
+                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
+                    : 'var(--shadow)'
+              }"
+            />
+          </div>
+          <div class="input-section">
+            <label for="inquiry">Inquiry</label>
+            <textarea
+              type="text"
+              name="inquiry"
+              formControlName="inquiry"
+              placeholder="Please input inquiry"
+              [style]="{
+                'box-shadow':
+                  inquiry?.touched && inquiry?.invalid
+                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
+                    : 'var(--shadow)'
+              }"
+            ></textarea>
+          </div>
+          <button
+            [style]="{
+              'background-color': formSent
+                ? 'green'
+                : contactForm.status !== 'INVALID'
+                ? 'black'
+                : 'rgba(128, 128, 128, 0.464)',
+              color: 'white'
+            }"
+            [disabled]="contactForm.status == 'INVALID' || formSent"
+          >
+            {{ formSent ? "Form Sent!" : "Submit" }}
+          </button>
+        </form>
+      </div>
+      <p class="hide">Psst... this is the email form!</p>
     </div>
-    <p class="hide">Psst... this is the email form!</p>
   </div>
 </div>

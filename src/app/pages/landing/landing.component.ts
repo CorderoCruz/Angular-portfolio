@@ -1,12 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import {
-  landingBackground,
   cruzLogosWhite,
+  profilePicture,
+  cruzLogosBlack,
 } from "src/app/shared/ImageReferences";
 import { HeaderService } from "src/app/shared/services/header.service";
-import { LoadingActions } from "src/app/store/shared/loading/loading.actions";
-import { selectPageStatus } from "src/app/store/shared/loading/loading.selector";
 
 @Component({
   selector: "app-landing",
@@ -14,18 +13,17 @@ import { selectPageStatus } from "src/app/store/shared/loading/loading.selector"
   styleUrls: ["./landing.component.css"],
 })
 export class LandingComponent implements OnInit {
-  constructor(private store: Store, private headerService: HeaderService) {}
+  constructor(private store: Store, public headerService: HeaderService) {}
+  cruzLogoWhite: string = cruzLogosWhite;
+  profilePicture: string = profilePicture;
 
-  backgroundColor: string = "rgba(0,  0, 0 , .3)";
-  imageSrc: string = cruzLogosWhite;
-  linkColor: string = "white";
-  landingBackground: string = landingBackground;
+  //inputs for header if screen is less than 900
+
+  backgroundColor: string = "white";
+  imageSrc: string = cruzLogosBlack;
+  linkColor: string = "black";
+  menu: string = "black";
   boxShadow: boolean = true;
-  menu: string = "white";
 
-  loading$ = this.store.select(selectPageStatus);
-
-  ngOnInit(): void {
-    this.store.dispatch(LoadingActions.loadPageRequest({ status: true }));
-  }
+  ngOnInit(): void {}
 }

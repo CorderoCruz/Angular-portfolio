@@ -19,5 +19,8 @@ export const cruzLogosWhite: string =
 export const profilePicture: string =
   "https://corderocruz-portfolio.s3.amazonaws.com/profile-picture-transparent.jpg";
 
+export const transparentProfilePicture: string =
+  "https://corderocruz-portfolio.s3.amazonaws.com/transparent-profile-picture.png";
+
 export const contact: string =
   "https://corderocruz-portfolio.s3.amazonaws.com/contact.jpg";

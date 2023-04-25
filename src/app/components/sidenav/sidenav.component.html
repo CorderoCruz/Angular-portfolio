@@ -1,0 +1,21 @@
+<nav>
+  <div class="img-container">
+    <a routerLink="/">
+      <img [src]="cruzLogoTransparent" alt="Logo for portfolio" />
+    </a>
+  </div>
+  <div class="links-container">
+    <div
+      class="line"
+      [style]="{ top: activeLinkUnderline }"
+      *ngIf="activeLinkUnderline"
+    ></div>
+    <a
+      *ngFor="let link of ['Projects', 'About', 'Contact', 'Blog']"
+      [href]="link !== 'Blog' ? '#' + link.toLowerCase() : '/blog'"
+      (mouseenter)="activeLink(link)"
+      (click)="activeLink(link)"
+      >{{ link | uppercase }}</a
+    >
+  </div>
+</nav>

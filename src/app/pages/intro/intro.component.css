@@ -1,0 +1,191 @@
+.intro-container {
+  height: 100vh;
+  width: 100%;
+  padding: 5vh 5vw;
+  scroll-snap-align: start;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #b921ff51, #2af59851);
+}
+
+.intro-content {
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  padding: 5%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+/* Main styles */
+.intro-content {
+  color: #999;
+  /* img size is 50x50 */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC")
+    repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 0.92s infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+.intro-content::before {
+  content: "";
+  font-size: 8rem;
+  font-weight: 100;
+}
+
+h1,
+h2 {
+  font-family: Exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+  font-weight: 300;
+  color: black;
+  letter-spacing: -3px;
+}
+
+h1 {
+  font-size: 4.5em;
+}
+
+.name h1:nth-child(2) {
+  transform: translateY(-20px);
+}
+
+.container {
+  display: inline-block;
+}
+
+h2 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+  width: 0;
+  font-size: 3em;
+  transform: translateY(-20px);
+  animation: typing 1.5s steps(30, end) forwards, blinking 1s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: black;
+  }
+  100% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinking {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(0, 0, 0);
+  }
+}
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 4em;
+  }
+  h2 {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro-container {
+    padding-top: 15vh;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 3.5em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 475px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+}

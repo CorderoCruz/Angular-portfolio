@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
@@ -7,28 +6,22 @@ import {
   ViewChild,
 } from "@angular/core";
 import { Store } from "@ngrx/store";
-import {
-  contact,
-  cruzLogosBlack,
-  cruzLogosWhite,
-} from "src/app/shared/ImageReferences";
-import { LoadingActions } from "src/app/store/shared/loading/loading.actions";
+import { contact, cruzLogosBlack } from "src/app/shared/ImageReferences";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { selectPageStatus } from "src/app/store/shared/loading/loading.selector";
 import { ContactService } from "src/app/shared/services/contact.service";
-import {} from "rxjs";
+import { BehaviorSubject, debounceTime, fromEvent, Observable } from "rxjs";
 import { FormBuilder, Validators } from "@angular/forms";
+import { HeaderService } from "src/app/shared/services/header.service";
 
 @Component({
   selector: "app-contact",
   templateUrl: "./contact.component.html",
   styleUrls: ["./contact.component.css"],
 })
-export class ContactComponent implements OnInit {
-  @ViewChild("email") mail: ElementRef;
-
+export class ContactComponent implements OnInit, AfterViewInit {
   constructor(
     private store: Store,
     private contactService: ContactService,
@@ -48,21 +41,32 @@ export class ContactComponent implements OnInit {
 
   loading$ = this.store.select(selectPageStatus);
 
-  activeMail: boolean = false;
-
   formSent: boolean = false;
 
-  activateMail(event: Event): void {
-    event.preventDefault();
-    this.activeMail ? (this.activeMail = false) : (this.activeMail = true);
-    setTimeout(() => {
-      this.activeMail = false;
-    }, 1000);
+  emailIcon: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  @ViewChild("header") header: ElementRef;
+  @ViewChild("inboxIcon") inboxIcon: ElementRef;
+
+  inboxReturn(inboxIcon: ElementRef) {
+    return fromEvent(inboxIcon.nativeElement, "click");
   }
+
+  sendEmail(event: Event): void {}
+  delay: any;
+
+  activeMail: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   contactForm = this.fb.group({
     name: ["", Validators.required],
-    email: ["", Validators.required],
+    email: [
+      "",
+      [
+        Validators.required,
+        Validators.email,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
+      ],
+    ],
     subject: ["", Validators.required],
     inquiry: ["", Validators.required],
   });
@@ -85,14 +89,23 @@ export class ContactComponent implements OnInit {
     return this.contactForm.get("inquiry");
   }
 
-  submitForm(): void {
-    this.contactService.submitContactForm({
-      ...this.contactForm.getRawValue(),
-    });
+  submitForm(event: Event): void {
+    if (this.contactForm.status === "INVALID")
+      return alert("Fields are empty, please try again");
+    this.contactService.submitContactForm(event);
+    this.contactForm.reset();
     this.formSent = true;
   }
 
-  ngOnInit(): void {
-    this.store.dispatch(LoadingActions.loadPageRequest({ status: true }));
+  ngAfterViewInit() {
+    const obs: Observable<any> = this.inboxReturn(this.inboxIcon);
+    this.delay = obs.pipe(debounceTime(250)).subscribe(() => {
+      this.activeMail.next(true);
+      setTimeout(() => {
+        this.activeMail.next(false);
+      }, 1000);
+    });
   }
+
+  ngOnInit(): void {}
 }

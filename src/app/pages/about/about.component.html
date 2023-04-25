@@ -1,31 +1,37 @@
-<app-header
-  [backgroundColor]="backgroundColor"
-  [imageSrc]="imageSrc"
-  [linkColor]="linkColor"
-  [menu]="menu"
-  [boxShadow]="boxShadow"
-></app-header>
-<div class="about-page-container">
-  <!-- background -->
-  <div *ngIf="!(loading$ | async)" class="background-left"></div>
-  <div *ngIf="!(loading$ | async)" class="background-right"></div>
-  <!-- background -->
-
-  <div
-    class="main-content {{ (loading$ | async) ? 'loading' : '' }}"
-    (scroll)="onScroll()"
-  >
-    <!-- loading animation -->
-    <div *ngIf="loading$ | async" class="spinner"></div>
-    <!-- loading animation -->
-    <div *ngIf="!(loading$ | async)" class="main-container" #main>
-      <div class="main-left">
-        <div class="image-container">
-          <img [src]="profilePicture" alt="" />
+<div class="about-page-container" id="about">
+  <div class="main-content">
+    <div class="image-container">
+      <img [src]="profilePicture" alt="{{ profilePicture }}" />
+    </div>
+    <div class="background"></div>
+    <div class="text-container">
+      <h2>About Me</h2>
+      <div>
+        <p class="tab">
+          Hello, my name is Cruz Cordero and I am a full stack software
+          engineer. I have learned a lot of my knowledge through University of
+          California, Riverside Coding Bootcamp, where I earned my certificate
+          from, but most of my knowledge comes from my own self learning.
+        </p>
+        <br />
+        <p class="tab">
+          I am proficient with the MERN and MEAN stack, relational and
+          non-relational databases such as MongoDB, MySQL, DynamoDB, and cloud
+          technology AWS.
+        </p>
+        <br />
+        <p class="tab">
+          I have a a passion for leaning new things. I am loving this journey as
+          a software developer and I can not wait to see where takes it takes
+          me.
+        </p>
+        <div class="tech">
+          <img
+            *ngFor="let tech of techs"
+            [src]="tech.imageLink"
+            [alt]="tech.name"
+          />
         </div>
-      </div>
-      <div class="main-right">
-        <h2>About</h2>
       </div>
     </div>
   </div>

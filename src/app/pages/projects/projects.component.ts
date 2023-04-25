@@ -1,21 +1,34 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, inject, Input, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { cruzLogosTransparent } from "src/app/shared/ImageReferences";
-import { LoadingActions } from "src/app/store/shared/loading/loading.actions";
+import { map, Observable } from "rxjs";
+import { Project } from "src/app/project.interface";
+import {
+  cruzLogosTransparent,
+  landingBackground,
+} from "src/app/shared/ImageReferences";
+import { ProjectService } from "src/app/shared/services/project.service";
 
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
   styleUrls: ["./projects.component.css"],
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, AfterViewInit {
   backgroundColor: string = "transperent";
   imageSrc: string = cruzLogosTransparent;
   linkColor: string = "black";
 
-  constructor(private store: Store) {}
+  projectService: ProjectService = inject(ProjectService);
 
-  ngOnInit(): void {
-    this.store.dispatch(LoadingActions.loadPageRequest({ status: true }));
+  hovered: number | string;
+
+  hoveredProject(projectId: number): void {
+    this.hovered = projectId;
   }
+
+  projects: Observable<any> = this.projectService._projects;
+
+  ngAfterViewInit(): void {}
+
+  ngOnInit(): void {}
 }

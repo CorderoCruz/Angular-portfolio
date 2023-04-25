@@ -1,55 +1,31 @@
 <header
   [style]="{
     'background-color': backgroundColor,
-    'box-shadow': boxShadow ? '0 0 5px rgba(0, 0, 0, 0.193)' : 'none'
+    'box-shadow': boxShadow ? '0 0 5px rgba(0, 0, 0, 0.193)' : 'none',
+    top: headerService.displayNavbar ? '0px' : '-12vh'
   }"
 >
   <div class="image-container">
     <a routerLink="/"><img [src]="imageSrc" alt="cruz logo home" /></a>
   </div>
 
-  <nav
-    id="navigation"
-    data-visible="false"
-    [ngClass]="headerService.navBarActive ? 'active' : ''"
-  >
+  <nav id="navigation" [ngClass]="headerService.navBarActive ? 'active' : ''">
     <a
+      *ngFor="let link of ['Projects', 'About', 'Contact', 'Blog']"
       (click)="linkClicked()"
       [ngStyle]="{ color: linkColor }"
       class="link"
       [ariaHidden]="headerService.navBarActive"
-      routerLink="/projects"
-      routerLinkActive="active-link"
-      >Projects</a
-    >
-    <a
-      (click)="linkClicked()"
-      [ngStyle]="{ color: linkColor }"
-      class="link"
-      [ariaHidden]="headerService.navBarActive"
-      routerLink="/blog"
-      routerLinkActive="active-link"
-      >Blog</a
-    >
-    <a
-      (click)="linkClicked()"
-      [ngStyle]="{ color: linkColor }"
-      class="link"
-      [ariaHidden]="headerService.navBarActive"
-      routerLink="/about"
-      routerLinkActive="active-link"
-      >About</a
-    >
-    <a
-      (click)="linkClicked()"
-      [ngStyle]="{ color: linkColor }"
-      class="link"
-      [ariaHidden]="headerService.navBarActive"
-      routerLink="/contact"
-      routerLinkActive="active-link"
-      >Contact</a
+      [routerLink]="link !== 'Blog' ? '#' + link.toLowerCase() : '/blog'"
+      >{{ link }}</a
     >
   </nav>
+  <div
+    *ngIf="headerService.navBarActive"
+    #backgroundNav
+    class="background-nav"
+    [ngClass]="headerService.navBarActive ? 'active' : ''"
+  ></div>
 
   <button
     [ngStyle]="{ color: menu }"
@@ -57,7 +33,15 @@
     (click)="toggleNav()"
     [ariaExpanded]="headerService.navBarActive"
   >
-    <fa-icon *ngIf="!headerService.navBarActive" [icon]="faBars"></fa-icon>
-    <fa-icon *ngIf="headerService.navBarActive" [icon]="faX"></fa-icon>
+    <fa-icon
+      class="fa-xl"
+      *ngIf="!headerService.navBarActive"
+      [icon]="faBars"
+    ></fa-icon>
+    <fa-icon
+      class="fa-xl"
+      *ngIf="headerService.navBarActive"
+      [icon]="faX"
+    ></fa-icon>
   </button>
 </header>

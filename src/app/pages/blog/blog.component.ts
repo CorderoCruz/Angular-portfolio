@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { cruzLogosBlue } from "src/app/shared/ImageReferences";
+import {
+  cruzLogosBlue,
+  cruzLogosTransparent,
+} from "src/app/shared/ImageReferences";
 import { LoadingActions } from "src/app/store/shared/loading/loading.actions";
 
 @Component({
@@ -13,11 +16,11 @@ export class BlogComponent implements OnInit {
   //width of device
   width: number = window.innerWidth > 0 ? window.innerWidth : screen.width;
 
-  backgroundColor: string = "rgb(92,132,204)";
-  imageSrc: string = cruzLogosBlue;
-  linkColor: string = this.width < 900 ? "black" : "white";
+  backgroundColor: string = "white";
+  imageSrc: string = cruzLogosTransparent;
+  linkColor: string = "black";
   boxShadow: boolean = true;
-  menu: string = "white";
+  menu: string = "black";
 
   ngOnInit(): void {
     this.store.dispatch(LoadingActions.loadPageRequest({ status: true }));

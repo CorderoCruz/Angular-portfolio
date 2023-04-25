@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 :root {
   --shadow: 0 0 5px rgba(0, 0, 0, 0.193);
 }
@@ -7,27 +9,28 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Open Sans";
+  font-family: Exo;
 }
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #0000009a #ffffff00;
+  scrollbar-color: #00000056 #ffffff00;
 }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
+  height: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #ffffff00;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #00000037;
+  background-color: #00000047;
   border-radius: 10px;
   border: none;
 }
@@ -103,5 +106,12 @@
 }
 
 html {
-  height: 100%;
+  overflow: overlay;
+}
+
+@media (max-width: 900px) {
+  html {
+    overflow: overlay;
+    scroll-behavior: smooth;
+  }
 }

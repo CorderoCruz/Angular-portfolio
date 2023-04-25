@@ -1,34 +1,15 @@
-<div class="landing-container">
-  <app-header
-    [backgroundColor]="backgroundColor"
-    [imageSrc]="imageSrc"
-    [linkColor]="linkColor"
-    [menu]="menu"
-    [boxShadow]="boxShadow"
-  ></app-header>
-
-  <div *ngIf="!(loading$ | async)" class="image-container">
-    <img
-      [src]="landingBackground"
-      alt="landing bcakground image of icy mountains"
-    />
+<div class="main-container">
+  <app-sidenav></app-sidenav>
+  <div class="header-container">
+    <app-header
+      [backgroundColor]="backgroundColor"
+      [imageSrc]="imageSrc"
+      [linkColor]="linkColor"
+      [menu]="menu"
+      [boxShadow]="boxShadow"
+    ></app-header>
   </div>
-  <main>
-    <!-- loading animation -->
-    <div *ngIf="loading$ | async" class="spinner"></div>
-    <!-- loading animation -->
-
-    <div *ngIf="!(loading$ | async)" class="main-content">
-      <div class="greeting">
-        <h1>Cruz Cordero</h1>
-        <h3>
-          Hello, I'm Cruz. I am a full stack software engineer with a focus on
-          the MEAN stack.
-        </h3>
-        <a routerLink="/about"
-          ><button class="about-me-btn">About me</button></a
-        >
-      </div>
-    </div>
-  </main>
+  <div class="content">
+    <app-content-container></app-content-container>
+  </div>
 </div>

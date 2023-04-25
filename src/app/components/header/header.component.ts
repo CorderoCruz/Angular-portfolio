@@ -1,7 +1,13 @@
-import { Component, ElementRef, Input } from "@angular/core";
-import { Icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  Input,
+  ViewChild,
+} from "@angular/core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
-import { ViewChild } from "@angular/core";
 import { HeaderService } from "src/app/shared/services/header.service";
 @Component({
   selector: "app-header",
@@ -9,7 +15,7 @@ import { HeaderService } from "src/app/shared/services/header.service";
   styleUrls: ["./header.component.css"],
 })
 export class HeaderComponent {
-  constructor(public headerService: HeaderService) {}
+  headerService: HeaderService = inject(HeaderService);
   //header styling
   @Input() backgroundColor: string;
   @Input() imageSrc: string;
@@ -21,24 +27,44 @@ export class HeaderComponent {
   faBars: IconDefinition = faBars;
   faX: IconDefinition = faX;
 
+  // allows us to click outside the navbar when on smaller screens and close the navigation bar
+  @ViewChild("backgroundNav") backgroundNav: ElementRef;
+  @HostListener("window:click", ["$event"])
+  clicked(event: Event): void {
+    const target = event.target;
+    if (this.headerService.navBarActive) {
+      const background = this.backgroundNav.nativeElement;
+      if (target === background) this.headerService.navBarActive = false;
+    }
+  }
+
   //toggle
   toggleNav() {
-    if (this.headerService.navBarActive) {
-      this.headerService.navBarActive = false;
-      if (location.pathname === "/") {
-        this.menu = "white";
-      }
-    } else {
-      this.headerService.navBarActive = true;
-      this.linkColor = "black";
-      if (location.pathname === "/") {
-        this.menu = "black";
-      }
-    }
+    const navbarActive = this.headerService.navBarActive;
+    navbarActive
+      ? (this.headerService.navBarActive = false)
+      : (this.headerService.navBarActive = true);
   }
 
   //resetting it navbar if the user clicks on a link
   linkClicked() {
     this.headerService.navBarActive = false;
+  }
+
+  oldScrollY = window.scrollY;
+
+  @HostListener("window:scroll", ["$event"])
+  onScroll(event: Event): void {
+    const currentScroll: number = window.scrollY;
+    if (
+      (this.oldScrollY > currentScroll && this.oldScrollY !== currentScroll) ||
+      currentScroll <= 0
+    ) {
+      this.headerService.displayNavbar = true;
+    } else {
+      this.headerService.displayNavbar = false;
+    }
+
+    this.oldScrollY = currentScroll;
   }
 }

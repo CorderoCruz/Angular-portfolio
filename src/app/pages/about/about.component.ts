@@ -11,6 +11,7 @@ import { Store } from "@ngrx/store";
 import {
   cruzLogosTransparent,
   profilePicture,
+  transparentProfilePicture,
 } from "src/app/shared/ImageReferences";
 import { AboutService } from "src/app/shared/services/about.service";
 import { HeaderService } from "src/app/shared/services/header.service";
@@ -23,53 +24,42 @@ import { selectPageStatus } from "src/app/store/shared/loading/loading.selector"
   styleUrls: ["./about.component.css"],
 })
 export class AboutComponent implements OnInit {
-  constructor(private store: Store) {}
-  @ViewChild("main")
-  main: ElementRef;
+  profilePicture: string = transparentProfilePicture;
 
-  backgroundColor: string = "";
-  imageSrc: string = cruzLogosTransparent;
-  linkColor: string = "black";
-  menu: string = "black";
-  boxShadow: boolean = false;
+  techs: { name: string; imageLink: string }[] = [
+    {
+      name: "MongoDB",
+      imageLink: "https://img.icons8.com/color/48/null/mongodb.png",
+    },
+    {
+      name: "MySQL",
+      imageLink: "https://img.icons8.com/fluency/48/null/mysql-logo.png",
+    },
+    {
+      name: "ExpressJS",
+      imageLink: "https://img.icons8.com/ios/50/null/express-js.png",
+    },
+    {
+      name: "ReactJS",
+      imageLink: "https://img.icons8.com/color/48/null/react-native.png",
+    },
+    {
+      name: "Angular2+",
+      imageLink: "https://img.icons8.com/fluency/48/null/angularjs.png",
+    },
+    {
+      name: "NodeJS",
+      imageLink: "https://img.icons8.com/color/48/null/nodejs.png",
+    },
+    {
+      name: "AWS",
+      imageLink: "https://img.icons8.com/color/48/null/amazon-web-services.png",
+    },
+    {
+      name: "GraphQL",
+      imageLink: "https://img.icons8.com/color/48/null/graphql.png",
+    },
+  ];
 
-  //getting the width of the users device
-  deviceWidth: number =
-    window.innerWidth > 0 ? window.innerWidth : screen.width;
-
-  profilePicture: string = profilePicture;
-
-  loading$ = this.store.select(selectPageStatus);
-
-  onScroll() {
-    const mainTop: number = this.main.nativeElement.getBoundingClientRect().top;
-
-    //if the screen size is larger
-    if (this.deviceWidth >= 900) {
-      if (mainTop <= 138) {
-        this.backgroundColor = "white";
-        this.boxShadow = true;
-      }
-      if (mainTop > 138) {
-        this.backgroundColor = "transparent";
-        this.boxShadow = false;
-      }
-    }
-
-    //if the screen size is smaller
-    if (this.deviceWidth < 900) {
-      if (mainTop < 138) {
-        this.backgroundColor = "white";
-        this.boxShadow = true;
-      }
-      if (mainTop >= 138) {
-        this.backgroundColor = "transparent";
-        this.boxShadow = false;
-      }
-    }
-  }
-
-  ngOnInit(): void {
-    this.store.dispatch(LoadingActions.loadPageRequest({ status: true }));
-  }
+  ngOnInit(): void {}
 }

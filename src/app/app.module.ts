@@ -27,6 +27,11 @@ import { loadingReducer } from "./store/shared/loading/loading.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { LoadingEffects } from "./store/shared/loading/loading.effects";
 import { ReactiveFormsModule } from "@angular/forms";
+import { ContentContainerComponent } from "./components/content-container/content-container.component";
+import { IntroComponent } from "./pages/intro/intro.component";
+import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { ProjectComponent } from "./pages/project/project.component";
+import { NotFoundComponent } from "./pages/not-found/not-found.component";
 
 const routes: Routes = [
   {
@@ -34,20 +39,17 @@ const routes: Routes = [
     component: LandingComponent,
   },
   {
-    path: "projects",
-    component: ProjectsComponent,
+    path: "project/:id",
+    component: ProjectComponent,
+  },
+  { path: "blog", component: BlogComponent },
+  {
+    path: "page-unavailable",
+    component: NotFoundComponent,
   },
   {
-    path: "blog",
-    component: BlogComponent,
-  },
-  {
-    path: "about",
-    component: AboutComponent,
-  },
-  {
-    path: "contact",
-    component: ContactComponent,
+    path: "**",
+    redirectTo: "/page-unavailable",
   },
 ];
 
@@ -60,6 +62,11 @@ const routes: Routes = [
     AboutComponent,
     ProjectsComponent,
     ContactComponent,
+    ContentContainerComponent,
+    IntroComponent,
+    SidenavComponent,
+    ProjectComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
