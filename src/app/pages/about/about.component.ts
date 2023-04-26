@@ -28,6 +28,31 @@ export class AboutComponent implements OnInit {
 
   techs: { name: string; imageLink: string }[] = [
     {
+      name: "TypeScript",
+      imageLink: "https://img.icons8.com/color/48/null/typescript.png",
+    },
+    {
+      name: "JavaScript",
+      imageLink: "https://img.icons8.com/fluency/48/null/javascript.png",
+    },
+    {
+      name: "HTML5",
+      imageLink: "https://img.icons8.com/arcade/64/null/html-5.png",
+    },
+    { name: "CSS", imageLink: "https://img.icons8.com/color/48/null/css3.png" },
+    {
+      name: "SASS",
+      imageLink: "https://img.icons8.com/color/48/null/sass.png",
+    },
+    {
+      name: "TailWindCSS",
+      imageLink: "https://img.icons8.com/color/48/null/tailwindcss.png",
+    },
+    {
+      name: "Bootstrap",
+      imageLink: "https://img.icons8.com/color/48/null/bootstrap.png",
+    },
+    {
       name: "MongoDB",
       imageLink: "https://img.icons8.com/color/48/null/mongodb.png",
     },

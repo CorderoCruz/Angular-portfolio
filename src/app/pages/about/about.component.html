@@ -27,6 +27,7 @@
         </p>
         <div class="tech">
           <img
+            title="{{ tech.name }}"
             *ngFor="let tech of techs"
             [src]="tech.imageLink"
             [alt]="tech.name"

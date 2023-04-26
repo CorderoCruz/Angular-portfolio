@@ -64,20 +64,16 @@ export class ProjectService {
       id: 2,
       title: "Portfolio",
       description:
-        "Manolo Barbershop is a barbershop located in Riverside, California. Close to the amazing University of California, Riverside. Manolo Barbershop was previously using a google web template for their online website." +
-        " We reached out to the organization to inquire if they were interested in letting me and my classmates build them a enterprise level web application, in which they agreed to." +
-        " The web application itself was build on the MERN stack, MongoDB for our database, ExpressJS to architect our server, React for our front-end library, and NodeJS for our backend environment." +
-        " Apart from the MERN stack, we also used a couple more libraries like TalwindCSS for our styling, Json Web Tokens for our front-end local storage key, to be validated by the backend." +
-        " GraphQL for querying data from our backend server and database, bcrypt to hash our user's passwords for sercurity protection, and lastly our hosting environment Heroku.",
+        "This portfolio is to demonstrate my abilities as a full-stack software engineer. This portfolio was built from scratch without using a template." +
+        " For now, this portfolio is hosted on Firebase and does not include a backend. I do plan on making this portfolio a full stack application," +
+        " I plan on hosting the backend server on some AWS EC2 instance and using a database like DynamoDB to host my projects.",
       responsibilities:
-        "For this project, I was incharge of designing and mostly the front-end and deployment. I did contribute some backend routing, but my main task was to make an optimized and responsive front-end application" +
-        " I used media queries to make the application fully responsive with a mobile first approach. I used the TailwindCSS library to have easy access to inline styling. I made sure that all the end" +
-        " points to our backend server were up and running and for every user that makes and account is able to do so securely by using local storage to store the user's Json Web Token and send that token with every request" +
-        " that would require the user to be authenticated. Creating form validations to avoid any cross site script injection. Routing the user to the correct web address using React Router. Implementing Google Maps API for the user to be able to locate Manolo Barbershop without leaving the application." +
-        " Lastly, the deployment of our application to Heroku.",
+        "I had a lot of fun building out this project. I used Angular 14 for my front-end framework as I am more familiar with it compared to React." +
+        " I made this application with a desktop first approach mainly because this portfolio is meant to reach hiring managers or anyone of interest in doing" +
+        " business with. To save space for deployement, I did not load all images locally but rather in a AWS S3 bucket",
       technologies: [
         {
-          name: "MongooDb",
+          name: "MongooDB",
           imageLink: "https://img.icons8.com/color/48/null/mongodb.png",
         },
         {
@@ -109,7 +105,7 @@ export class ProjectService {
         "https://corderocruz-portfolio.s3.amazonaws.com/portfolio-project.png",
       ],
       deployedLink: "https://cruz-cor.web.app/",
-      repository: "https://github.com/SklylerF/manolo-barber-shop",
+      repository: "https://github.com/CorderoCruz/angular-portfolio",
     },
   ];
 
