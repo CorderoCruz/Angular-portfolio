@@ -82,12 +82,13 @@ button:hover {
 
 .show {
   visibility: visible;
-  transition: 0.4s;
   background-color: black;
+  transform: translateX(0);
+  transition: 1s;
 }
 
 .hide {
-  visibility: hidden;
+  transform: translateX(-300px);
 }
 
 * {

@@ -3,11 +3,7 @@
     <div
       #img
       class="project"
-      [class]="
-        (isIntersected | async) && (slideInCount | async) !== 1
-          ? 'show'
-          : 'hide'
-      "
+      [class]="(isIntersected | async) ? 'show' : 'hide'"
       *ngFor="let project of projectService._projects | async"
       (mouseenter)="hoveredProject(project.id)"
       [style]="{

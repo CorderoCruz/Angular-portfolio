@@ -39,13 +39,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   observer: IntersectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log("intersecting");
         this.isIntersected.next(true);
-        setTimeout(() => {
-          this.slideInCount.next(1);
-        }, 500);
-      } else {
-        this.isIntersected.next(false);
       }
     });
   });
