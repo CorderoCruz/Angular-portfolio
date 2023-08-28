@@ -1,7 +1,13 @@
 <div class="projects-container" id="projects">
   <div class="project-content">
     <div
+      #img
       class="project"
+      [class]="
+        (isIntersected | async) && (slideInCount | async) !== 1
+          ? 'show'
+          : 'hide'
+      "
       *ngFor="let project of projectService._projects | async"
       (mouseenter)="hoveredProject(project.id)"
       [style]="{

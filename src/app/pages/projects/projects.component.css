@@ -80,6 +80,16 @@ button:hover {
   background-color: black;
 }
 
+.show {
+  visibility: visible;
+  transition: 0.4s;
+  background-color: black;
+}
+
+.hide {
+  visibility: hidden;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: #00000056 #ffffff00;
