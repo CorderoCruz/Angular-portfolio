@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 
 /* Background data (Original source: https://subtlepatterns.com/grid-me/) */

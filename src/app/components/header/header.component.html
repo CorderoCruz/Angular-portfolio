@@ -11,12 +11,12 @@
 
   <nav id="navigation" [ngClass]="headerService.navBarActive ? 'active' : ''">
     <a
-      *ngFor="let link of ['Projects', 'About', 'Contact', 'Blog']"
+      *ngFor="let link of headerService.links"
       (click)="linkClicked()"
       [ngStyle]="{ color: linkColor }"
       class="link"
       [ariaHidden]="headerService.navBarActive"
-      [routerLink]="link !== 'Blog' ? '#' + link.toLowerCase() : '/blog'"
+      [href]="link !== 'Blog' ? '#' + link.toLowerCase() : '/blog'"
       >{{ link }}</a
     >
   </nav>

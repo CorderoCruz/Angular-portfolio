@@ -1,5 +1,4 @@
-import { Component, HostListener, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
+import { Component, OnInit } from "@angular/core";
 import {
   cruzLogosWhite,
   profilePicture,
@@ -13,7 +12,7 @@ import { HeaderService } from "src/app/shared/services/header.service";
   styleUrls: ["./landing.component.css"],
 })
 export class LandingComponent implements OnInit {
-  constructor(private store: Store, public headerService: HeaderService) {}
+  constructor(public headerService: HeaderService) {}
   cruzLogoWhite: string = cruzLogosWhite;
   profilePicture: string = profilePicture;
 

@@ -7,8 +7,6 @@ import { landingBackground } from "../ImageReferences";
   providedIn: "root",
 })
 export class ProjectService {
-  templateImage: string = landingBackground;
-
   projects: Project[] = [
     {
       id: 1,
@@ -70,7 +68,10 @@ export class ProjectService {
       responsibilities:
         "I had a lot of fun building out this project. I used Angular 14 for my front-end framework as I am more familiar with it compared to React." +
         " I made this application with a desktop first approach mainly because this portfolio is meant to reach hiring managers or anyone of interest in doing" +
-        " business with. To save space for deployement, I did not load all images locally but rather in a AWS S3 bucket",
+        " business with. To save space for deployement, I did not load all images locally but rather in a AWS S3 bucket." +
+        " This portfolio was built from scratch. I could of used a template to project but I wanted to practice some more angular concepts like the @ViewChild and" +
+        " @Hostlistener practices and using the inject function instead of the constructor for dependency injection. This project was a learning experience and I am glad" +
+        " that I have built a solid foundation for it",
       technologies: [
         {
           name: "MongooDB",

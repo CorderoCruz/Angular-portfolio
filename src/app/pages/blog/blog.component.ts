@@ -1,10 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import {
-  cruzLogosBlue,
-  cruzLogosTransparent,
-} from "src/app/shared/ImageReferences";
-import { LoadingActions } from "src/app/store/shared/loading/loading.actions";
+import { cruzLogosTransparent } from "src/app/shared/ImageReferences";
 
 @Component({
   selector: "app-blog",
@@ -12,7 +7,7 @@ import { LoadingActions } from "src/app/store/shared/loading/loading.actions";
   styleUrls: ["./blog.component.css"],
 })
 export class BlogComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor() {}
   //width of device
   width: number = window.innerWidth > 0 ? window.innerWidth : screen.width;
 
@@ -22,7 +17,5 @@ export class BlogComponent implements OnInit {
   boxShadow: boolean = true;
   menu: string = "black";
 
-  ngOnInit(): void {
-    this.store.dispatch(LoadingActions.loadPageRequest({ status: true }));
-  }
+  ngOnInit(): void {}
 }

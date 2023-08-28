@@ -15,4 +15,6 @@ export class HeaderService {
     const clicked = fromEvent(document, "click");
     console.log(clicked);
   }
+
+  links: string[] = ["About", "Projects", "Contact", "Blog"];
 }

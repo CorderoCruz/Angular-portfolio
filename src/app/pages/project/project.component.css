@@ -1,5 +1,5 @@
 .main-container {
-  height: 100vh;
+  max-height: 100vh;
   width: 100vw;
   display: flex;
   color: white;
@@ -8,7 +8,7 @@
 
 .content {
   width: 100%;
-  height: 100vh;
+  max-height: 100vh;
   overflow: overlay;
   background: linear-gradient(to bottom, #b921ff51, #2abbf551);
   padding: 2vh 5vw;
@@ -95,7 +95,6 @@ a .tech-image.link:hover {
     padding-top: 12vh;
     padding: 12vh 0 5vh 0;
     height: auto;
-    overflow: hidden;
   }
 
   .header-container {

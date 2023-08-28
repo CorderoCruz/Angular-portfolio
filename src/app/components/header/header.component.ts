@@ -67,4 +67,6 @@ export class HeaderComponent {
 
     this.oldScrollY = currentScroll;
   }
+
+  links: string[] = ["Projects", "About", "Contact", "Blog"];
 }

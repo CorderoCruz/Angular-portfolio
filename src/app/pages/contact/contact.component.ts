@@ -5,16 +5,13 @@ import {
   OnInit,
   ViewChild,
 } from "@angular/core";
-import { Store } from "@ngrx/store";
 import { contact, cruzLogosBlack } from "src/app/shared/ImageReferences";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
-import { selectPageStatus } from "src/app/store/shared/loading/loading.selector";
 import { ContactService } from "src/app/shared/services/contact.service";
 import { BehaviorSubject, debounceTime, fromEvent, Observable } from "rxjs";
 import { FormBuilder, Validators } from "@angular/forms";
-import { HeaderService } from "src/app/shared/services/header.service";
 
 @Component({
   selector: "app-contact",
@@ -23,7 +20,6 @@ import { HeaderService } from "src/app/shared/services/header.service";
 })
 export class ContactComponent implements OnInit, AfterViewInit {
   constructor(
-    private store: Store,
     private contactService: ContactService,
     private fb: FormBuilder
   ) {}
@@ -38,8 +34,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
   menu: string = "black";
   boxShadow: boolean = true;
   contactImage: string = contact;
-
-  loading$ = this.store.select(selectPageStatus);
 
   formSent: boolean = false;
 

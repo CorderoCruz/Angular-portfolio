@@ -1,5 +1,4 @@
-import { Component, HostListener, inject } from "@angular/core";
-import { HeaderService } from "src/app/shared/services/header.service";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-content-container",
