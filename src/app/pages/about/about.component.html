@@ -1,34 +1,20 @@
-<div class="about-page-container" id="about">
+<div class="about-page-container" id="about" lazyLoading>
   <div class="main-content">
-    <div class="image-container">
+    <!-- <div class="image-container">
       <img [src]="profilePicture" alt="{{ profilePicture }}" />
-    </div>
+    </div> -->
     <div class="background"></div>
     <div class="text-container">
       <h2>About Me</h2>
       <div>
-        <p class="tab">
-          Hello, my name is Cruz Cordero and I am a full stack software
-          engineer. I have learned a lot of my knowledge through University of
-          California, Riverside Coding Bootcamp, where I earned my certificate
-          from, but most of my knowledge comes from my own self learning.
-        </p>
-        <br />
-        <p class="tab">
-          I am proficient with the MERN and MEAN stack, relational and
-          non-relational databases such as MongoDB, MySQL, DynamoDB, and cloud
-          technology AWS.
-        </p>
-        <br />
-        <p class="tab">
-          I have a a passion for leaning new things. I am loving this journey as
-          a software developer and I can not wait to see where takes it takes
-          me.
-        </p>
+        <div *ngFor="let content of contents">
+          <p class="tab" [innerHTML]="content.paragraph"></p>
+          <br />
+        </div>
         <div class="tech">
           <img
-            title="{{ tech.name }}"
             *ngFor="let tech of aboutService.techs"
+            title="{{ tech.name }}"
             [src]="tech.imageLink"
             [alt]="tech.name"
           />

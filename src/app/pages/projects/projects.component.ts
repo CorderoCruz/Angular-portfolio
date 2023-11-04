@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { cruzLogosTransparent } from "src/app/shared/ImageReferences";
+import { Logo } from "src/app/shared/links/ImageReferences";
 import { ProjectService } from "src/app/shared/services/project.service";
 
 @Component({
@@ -25,28 +25,18 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   slideInCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   backgroundColor: string = "transperent";
-  imageSrc: string = cruzLogosTransparent;
+  imageSrc: string = Logo.TRANSPARENT;
   linkColor: string = "black";
 
   projectService: ProjectService = inject(ProjectService);
 
-  hovered: number | string;
+  hovered: number;
 
   hoveredProject(projectId: number): void {
     this.hovered = projectId;
   }
 
-  observer: IntersectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        this.isIntersected.next(true);
-      }
-    });
-  });
-
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
-    this.observer.observe(this.images.nativeElement);
-  }
+  ngAfterViewInit(): void {}
 }

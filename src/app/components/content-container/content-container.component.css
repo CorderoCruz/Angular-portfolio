@@ -3,6 +3,7 @@
   height: 100vh;
   overflow-y: overlay;
   scroll-behavior: smooth;
+  background-color: black;
 }
 
 @media (max-width: 900px) {

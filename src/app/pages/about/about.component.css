@@ -1,23 +1,18 @@
 * {
-  color: black;
+  color: white;
 }
 
 .about-page-container {
-  height: 100vh;
   padding: 5vh 5vw;
   overflow: hidden;
-  scroll-snap-align: start;
   position: relative;
-  background: linear-gradient(to bottom, #2af59851, #fec05151);
 }
 
 .main-content {
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: white;
   padding: 4vh 4vw;
-  box-shadow: var(--shadow);
   border-radius: 5px;
   position: relative;
   overflow: hidden;
@@ -42,24 +37,7 @@
   align-items: center;
 }
 
-.background {
-  left: 0;
-  top: 0;
-  position: absolute;
-  z-index: 10;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.86),
-    rgba(197, 197, 197, 0.86),
-    rgba(0, 0, 0, 0.86)
-  );
-  width: 100%;
-  height: 100%;
-}
-
 img {
-  filter: grayscale(1);
-  width: 100%;
   z-index: 0;
   transform: translateY(10%) translateX(20%);
 }

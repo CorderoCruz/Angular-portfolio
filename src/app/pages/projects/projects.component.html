@@ -1,27 +1,24 @@
 <div class="projects-container" id="projects">
   <div class="project-content">
     <div
-      #img
       class="project"
-      [class]="(isIntersected | async) ? 'show' : 'hide'"
       *ngFor="let project of projectService._projects | async"
       (mouseenter)="hoveredProject(project.id)"
+      (mouseleave)="hoveredProject(-1)"
       [style]="{
         'background-color':
           hovered === project.id ? 'white' : 'rgb(249, 249, 249)'
       }"
     >
       <div class="image-container">
-        <img [src]="project.images[0]" alt="{{ project.images[0] }}" />
+        <img [src]="project.images[0]" [alt]="project.images[0]" />
       </div>
       <div class="about-project">
-        <h3>{{ project.title }}</h3>
-        <p>
-          {{ project.description }}
-        </p>
-        <p>{{ project.responsibilities }}</p>
+        <h3 [innerHTML]="project.title"></h3>
+        <p [innerHTML]="project.description"></p>
+        <p [innerHTML]="project.responsibilities"></p>
         <div class="button-container">
-          <a routerLink="project/{{ project.id }}"
+          <a [routerLink]="'project/' + project.id"
             ><button
               [style]="{
                 'background-color':

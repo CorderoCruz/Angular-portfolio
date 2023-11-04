@@ -2,14 +2,12 @@
   height: 100vh;
   width: 100%;
   padding: 5vh 5vw;
-  scroll-snap-align: start;
   overflow: hidden;
-  background: linear-gradient(to bottom, #b921ff51, #2af59851);
+  z-index: -1;
 }
 
 .intro-content {
   border-radius: 5px;
-  box-shadow: var(--shadow);
   padding: 5%;
   height: 100%;
   width: 100%;

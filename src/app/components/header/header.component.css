@@ -2,7 +2,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 10px 60px;
-  box-shadow: var(--shadow);
+  box-shadow: 1px 1px 100px 1px white;
   align-items: center;
   z-index: 10000;
   position: fixed;

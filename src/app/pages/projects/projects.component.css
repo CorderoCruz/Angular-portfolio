@@ -1,9 +1,6 @@
 .projects-container {
   padding: 5vh 5vw;
   overflow: hidden;
-  height: 100vh;
-  scroll-snap-align: start;
-  background: linear-gradient(to bottom, #fec05151, #fe515151);
 }
 
 .project-content {
@@ -22,7 +19,7 @@
 }
 
 .project {
-  max-height: 100vh;
+  max-height: 75vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -34,6 +31,7 @@
   overflow: hidden;
   position: relative;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .project:hover {
@@ -80,17 +78,6 @@ button:hover {
   background-color: black;
 }
 
-.show {
-  visibility: visible;
-  background-color: black;
-  transform: translateX(0);
-  transition: 1s;
-}
-
-.hide {
-  transform: translateX(-300px);
-}
-
 * {
   scrollbar-width: thin;
   scrollbar-color: #00000056 #ffffff00;
@@ -121,7 +108,6 @@ button:hover {
 @media (max-width: 500px) {
   .project {
     min-width: 350px;
-    max-height: 90vh;
   }
 }
 

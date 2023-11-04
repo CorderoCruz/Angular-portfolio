@@ -1,16 +1,7 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  inject,
-  Input,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
-import { faBars, faX, IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { filter, map, Observable } from "rxjs";
+import { Component, inject, OnInit } from "@angular/core";
+import { map, Observable } from "rxjs";
 import { Project } from "src/app/project.interface";
-import { cruzLogosBlack } from "src/app/shared/ImageReferences";
+import { Logo } from "src/app/shared/links/ImageReferences";
 import { HeaderService } from "src/app/shared/services/header.service";
 import { ProjectService } from "src/app/shared/services/project.service";
 
@@ -25,7 +16,7 @@ export class ProjectComponent implements OnInit {
 
   //header styling
   backgroundColor: string = "white";
-  imageSrc: string = cruzLogosBlack;
+  imageSrc: string = Logo.BLACK;
   linkColor: string = "black";
   menu: string = "black";
   boxShadow: boolean = true;

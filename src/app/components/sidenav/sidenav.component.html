@@ -4,11 +4,16 @@
       <img [src]="cruzLogoTransparent" alt="Logo for portfolio" />
     </a>
   </div>
-  <div class="links-container">
+  <div
+    class="links-container"
+    (mouseenter)="mouseOver()"
+    (mouseleave)="mouseOver()"
+  >
     <div
       class="line"
-      [style]="{ top: activeLinkUnderline }"
-      *ngIf="activeLinkUnderline"
+      [class]="isLinkOut() ? 'show' : 'hide'"
+      [style]="{ top: activeLinkUnderline() }"
+      *ngIf="activeLinkUnderline()"
     ></div>
     <a
       *ngFor="let link of headerService.links"
@@ -19,3 +24,5 @@
     >
   </div>
 </nav>
+
+<div id="hovered">hovered</div>

@@ -1,75 +1,99 @@
 import { Injectable } from "@angular/core";
+import { TechImageLink, TechName } from "../links/stackReferences";
+
+export type Tech = {
+  name: string;
+  imageLink: string;
+};
 
 @Injectable({
   providedIn: "root",
 })
 export class AboutService {
-  constructor() {}
-  techs: { name: string; imageLink: string }[] = [
+  techs: Tech[] = [
     {
-      name: "TypeScript",
-      imageLink: "https://img.icons8.com/color/48/null/typescript.png",
+      name: TechName.TypeScript,
+      imageLink: TechImageLink.TypeScript,
     },
     {
-      name: "JavaScript",
-      imageLink: "https://img.icons8.com/fluency/48/null/javascript.png",
+      name: TechName.JavaScript,
+      imageLink: TechImageLink.JavaScript,
     },
     {
-      name: "HTML5",
-      imageLink: "https://img.icons8.com/arcade/64/null/html-5.png",
-    },
-    { name: "CSS", imageLink: "https://img.icons8.com/color/48/null/css3.png" },
-    {
-      name: "SASS",
-      imageLink: "https://img.icons8.com/color/48/null/sass.png",
+      name: TechName.HTML5,
+      imageLink: TechImageLink.HTML5,
     },
     {
-      name: "TailWindCSS",
-      imageLink: "https://img.icons8.com/color/48/null/tailwindcss.png",
+      name: TechName.CSS,
+      imageLink: TechImageLink.CSS,
     },
     {
-      name: "Bootstrap",
-      imageLink: "https://img.icons8.com/color/48/null/bootstrap.png",
+      name: TechName.SASS,
+      imageLink: TechImageLink.SASS,
     },
     {
-      name: "MongoDB",
-      imageLink: "https://img.icons8.com/color/48/null/mongodb.png",
+      name: TechName.TailWindCSS,
+      imageLink: TechImageLink.TailWindCSS,
     },
     {
-      name: "MySQL",
-      imageLink: "https://img.icons8.com/fluency/48/null/mysql-logo.png",
+      name: TechName.Bootstrap,
+      imageLink: TechImageLink.Bootstrap,
     },
     {
-      name: "ExpressJS",
-      imageLink: "https://img.icons8.com/ios/50/null/express-js.png",
+      name: TechName.MongoDB,
+      imageLink: TechImageLink.MongoDB,
     },
     {
-      name: "ReactJS",
-      imageLink: "https://img.icons8.com/color/48/null/react-native.png",
+      name: TechName.MySQL,
+      imageLink: TechImageLink.MySQL,
     },
     {
-      name: "Angular2+",
-      imageLink: "https://img.icons8.com/fluency/48/null/angularjs.png",
+      name: TechName.ExpressJS,
+      imageLink: TechImageLink.ExpressJS,
     },
     {
-      name: "NodeJS",
-      imageLink: "https://img.icons8.com/color/48/null/nodejs.png",
+      name: TechName.React,
+      imageLink: TechImageLink.React,
     },
     {
-      name: "AWS",
-      imageLink: "https://img.icons8.com/color/48/null/amazon-web-services.png",
+      name: TechName.Angular,
+      imageLink: TechImageLink.Angular,
     },
     {
-      name: "GraphQL",
-      imageLink: "https://img.icons8.com/color/48/null/graphql.png",
+      name: TechName.Jest,
+      imageLink: TechImageLink.Jest,
     },
     {
-      name: "Git Bash",
-      imageLink: "https://img.icons8.com/color/48/null/git.png",
+      name: TechName.NodeJS,
+      imageLink: TechImageLink.NodeJS,
     },
     {
-      name: "Github",
-      imageLink: "https://img.icons8.com/ios-filled/50/null/github.png",
+      name: TechName.AWS,
+      imageLink: TechImageLink.AWS,
+    },
+    {
+      name: TechName.GraphQL,
+      imageLink: TechImageLink.GraphQL,
+    },
+    {
+      name: TechName.GitBash,
+      imageLink: TechImageLink.GitBash,
+    },
+    {
+      name: TechName.GitHub,
+      imageLink: TechImageLink.GitHub,
+    },
+    {
+      name: TechName.BitBucket,
+      imageLink: TechImageLink.BitBucket,
+    },
+    {
+      name: TechName.Jira,
+      imageLink: TechImageLink.Jira,
+    },
+    {
+      name: TechName.Confluence,
+      imageLink: TechImageLink.Confluence,
     },
   ];
 }

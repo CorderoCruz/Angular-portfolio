@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from "@angular/core";
-import { contact, cruzLogosBlack } from "src/app/shared/ImageReferences";
+import { Logo } from "src/app/shared/links/ImageReferences";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
@@ -29,11 +29,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
   faMessage: IconDefinition = faMessage;
 
   backgroundColor: string = "white";
-  imageSrc: string = cruzLogosBlack;
+  imageSrc: string = Logo.BLACK;
   linkColor: string = "black";
   menu: string = "black";
   boxShadow: boolean = true;
-  contactImage: string = contact;
 
   formSent: boolean = false;
 
@@ -46,7 +45,6 @@ export class ContactComponent implements OnInit, AfterViewInit {
     return fromEvent(inboxIcon.nativeElement, "click");
   }
 
-  sendEmail(event: Event): void {}
   delay: any;
 
   activeMail: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

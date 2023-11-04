@@ -1,13 +1,9 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { AngularFireModule } from "@angular/fire/compat";
-import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { RouterModule, Routes } from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AppComponent } from "./app.component";
-
-import { firebaseConfig } from "../environment";
 import { HeaderComponent } from "./components/header/header.component";
 import { LandingComponent } from "./pages/landing/landing.component";
 
@@ -21,7 +17,8 @@ import { IntroComponent } from "./pages/intro/intro.component";
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { ProjectComponent } from "./pages/project/project.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
-import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { LazyLoadingDirective } from "./lazy-loading.directive";
+import { ExperienceComponent } from "./pages/experience/experience.component";
 
 const routes: Routes = [
   {
@@ -58,16 +55,10 @@ const routes: Routes = [
     SidenavComponent,
     ProjectComponent,
     NotFoundComponent,
+    LazyLoadingDirective,
+    ExperienceComponent,
   ],
-  imports: [
-    BrowserModule,
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore()),
-    RouterModule.forRoot(routes),
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FontAwesomeModule,
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(routes), BrowserAnimationsModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

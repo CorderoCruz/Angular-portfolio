@@ -1,10 +1,5 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import {
-  cruzLogosBlack,
-  cruzLogosTransparent,
-  profilePicture,
-} from "src/app/shared/ImageReferences";
+import { Component, inject, signal, WritableSignal } from "@angular/core";
+import { Logo } from "src/app/shared/links/ImageReferences";
 import { HeaderService } from "src/app/shared/services/header.service";
 
 @Component({
@@ -15,27 +10,34 @@ import { HeaderService } from "src/app/shared/services/header.service";
 export class SidenavComponent {
   headerService: HeaderService = inject(HeaderService);
 
-  cruzLogoTransparent: string = cruzLogosTransparent;
+  cruzLogoTransparent: string = Logo.TRANSPARENT;
 
-  //currentId location
-  currentLocation: string = location.hash.split("#")[1];
-
-  activeLinkUnderline: string = "";
-
-  activeLinks: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  activeLinkUnderline: WritableSignal<string> = signal("");
 
   activeLink(link: string): void {
-    // this.currentLocation = link.toLowerCase();
-    const line = link.toLocaleLowerCase();
+    const line: string = link.toLocaleLowerCase();
 
-    line === "about"
-      ? (this.activeLinkUnderline = "20px")
-      : line === "projects"
-      ? (this.activeLinkUnderline = "46px")
-      : line === "contact"
-      ? (this.activeLinkUnderline = "74px")
-      : line === "blog"
-      ? (this.activeLinkUnderline = "102px")
-      : 0;
+    switch (line) {
+      case "about":
+        this.activeLinkUnderline.set("20px");
+        break;
+      case "projects":
+        this.activeLinkUnderline.set("46px");
+        break;
+      case "contact":
+        this.activeLinkUnderline.set("74px");
+        break;
+      default:
+        this.activeLinkUnderline.set("102px");
+        break;
+    }
   }
+
+  isLinkOut: WritableSignal<boolean> = signal(false);
+
+  mouseOver() {
+    this.isLinkOut.set(this.isLinkOut() ? false : true);
+  }
+
+  setObeservable() {}
 }

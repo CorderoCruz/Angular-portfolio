@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { cruzLogosTransparent } from "src/app/shared/ImageReferences";
+import { Logo } from "src/app/shared/links/ImageReferences";
 
 @Component({
   selector: "app-blog",
@@ -12,7 +12,7 @@ export class BlogComponent implements OnInit {
   width: number = window.innerWidth > 0 ? window.innerWidth : screen.width;
 
   backgroundColor: string = "white";
-  imageSrc: string = cruzLogosTransparent;
+  imageSrc: string = Logo.TRANSPARENT;
   linkColor: string = "black";
   boxShadow: boolean = true;
   menu: string = "black";

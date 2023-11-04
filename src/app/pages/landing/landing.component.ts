@@ -1,9 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  cruzLogosWhite,
-  profilePicture,
-  cruzLogosBlack,
-} from "src/app/shared/ImageReferences";
+import { Logo, Profile } from "src/app/shared/links/ImageReferences";
 import { HeaderService } from "src/app/shared/services/header.service";
 
 @Component({
@@ -13,13 +9,13 @@ import { HeaderService } from "src/app/shared/services/header.service";
 })
 export class LandingComponent implements OnInit {
   constructor(public headerService: HeaderService) {}
-  cruzLogoWhite: string = cruzLogosWhite;
-  profilePicture: string = profilePicture;
+  cruzLogoWhite: string = Logo.WHITE;
+  profilePicture: string = Profile.REGULAR;
 
   //inputs for header if screen is less than 900
 
   backgroundColor: string = "white";
-  imageSrc: string = cruzLogosBlack;
+  imageSrc: string = Logo.BLACK;
   linkColor: string = "black";
   menu: string = "black";
   boxShadow: boolean = true;
