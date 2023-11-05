@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  inject,
-  Input,
-  ViewChild,
-} from "@angular/core";
+import { Component, ElementRef, HostListener, inject, Input, ViewChild } from "@angular/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { HeaderService } from "src/app/shared/services/header.service";
@@ -27,6 +20,8 @@ export class HeaderComponent {
   faBars: IconDefinition = faBars;
   faX: IconDefinition = faX;
 
+  public navbarActive: boolean = this.headerService.navBarActive;
+
   // allows us to click outside the navbar when on smaller screens and close the navigation bar
   @ViewChild("backgroundNav") backgroundNav: ElementRef;
   @HostListener("window:click", ["$event"])
@@ -34,21 +29,18 @@ export class HeaderComponent {
     const target = event.target;
     if (this.headerService.navBarActive) {
       const background = this.backgroundNav.nativeElement;
-      if (target === background) this.headerService.navBarActive = false;
+      if (target === background) this.navbarActive = false;
     }
   }
 
   //toggle
   toggleNav() {
-    const navbarActive = this.headerService.navBarActive;
-    navbarActive
-      ? (this.headerService.navBarActive = false)
-      : (this.headerService.navBarActive = true);
+    this.navbarActive ? (this.navbarActive = false) : (this.navbarActive = true);
   }
 
   //resetting it navbar if the user clicks on a link
   linkClicked() {
-    this.headerService.navBarActive = false;
+    this.navbarActive = false;
   }
 
   oldScrollY = window.scrollY;
@@ -56,10 +48,7 @@ export class HeaderComponent {
   @HostListener("window:scroll", ["$event"])
   onScroll(event: Event): void {
     const currentScroll: number = window.scrollY;
-    if (
-      (this.oldScrollY > currentScroll && this.oldScrollY !== currentScroll) ||
-      currentScroll <= 0
-    ) {
+    if ((this.oldScrollY > currentScroll && this.oldScrollY !== currentScroll) || currentScroll <= 0) {
       this.headerService.displayNavbar = true;
     } else {
       this.headerService.displayNavbar = false;

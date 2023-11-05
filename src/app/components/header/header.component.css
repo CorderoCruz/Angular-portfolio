@@ -4,6 +4,7 @@ header {
   padding: 10px 60px;
   box-shadow: 1px 1px 100px 1px white;
   align-items: center;
+  overflow: hidden;
   z-index: 10000;
   position: fixed;
   height: 10vh;
