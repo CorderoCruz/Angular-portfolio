@@ -1,9 +1,5 @@
 <div class="about-page-container" id="about" lazyLoading>
   <div class="main-content">
-    <!-- <div class="image-container">
-      <img [src]="profilePicture" alt="{{ profilePicture }}" />
-    </div> -->
-    <div class="background"></div>
     <div class="text-container">
       <h2>About Me</h2>
       <div>
@@ -12,12 +8,7 @@
           <br />
         </div>
         <div class="tech">
-          <img
-            *ngFor="let tech of aboutService.techs"
-            title="{{ tech.name }}"
-            [src]="tech.imageLink"
-            [alt]="tech.name"
-          />
+          <img *ngFor="let tech of aboutService.techs" title="{{ tech.name }}" [src]="tech.imageLink" [alt]="tech.name" />
         </div>
       </div>
     </div>

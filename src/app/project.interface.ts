@@ -8,6 +8,6 @@ export interface Project {
     imageLink: string;
   }[];
   images: string[];
-  deployedLink: string;
-  repository: string;
+  deployedLink?: string;
+  repository?: string;
 }

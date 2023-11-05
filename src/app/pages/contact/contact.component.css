@@ -38,7 +38,7 @@
   letter-spacing: -0.05rem;
 }
 
-.box:nth-child(2).active {
+.box.active {
   animation: popup normal forwards 1s;
 }
 
@@ -143,14 +143,14 @@ textarea {
 input:focus {
   outline: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  transform: scale(1.03);
+  transform: scale(1.01);
   transition: 0.3s;
 }
 
 textarea:focus {
   outline: none;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 
 .hide {

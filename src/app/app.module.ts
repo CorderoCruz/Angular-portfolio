@@ -18,7 +18,6 @@ import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { ProjectComponent } from "./pages/project/project.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { LazyLoadingDirective } from "./lazy-loading.directive";
-import { ExperienceComponent } from "./pages/experience/experience.component";
 
 const routes: Routes = [
   {
@@ -56,7 +55,6 @@ const routes: Routes = [
     ProjectComponent,
     NotFoundComponent,
     LazyLoadingDirective,
-    ExperienceComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), BrowserAnimationsModule, ReactiveFormsModule, FontAwesomeModule],
   providers: [],

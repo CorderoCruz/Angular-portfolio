@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Logo } from "src/app/shared/links/ImageReferences";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -19,10 +13,7 @@ import { FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./contact.component.css"],
 })
 export class ContactComponent implements OnInit, AfterViewInit {
-  constructor(
-    private contactService: ContactService,
-    private fb: FormBuilder
-  ) {}
+  constructor(private contactService: ContactService, private fb: FormBuilder) {}
 
   faLinkedin: IconDefinition = faLinkedin;
   faGithub: IconDefinition = faGithub;
@@ -51,14 +42,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
 
   contactForm = this.fb.group({
     name: ["", Validators.required],
-    email: [
-      "",
-      [
-        Validators.required,
-        Validators.email,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
-      ],
-    ],
+    email: ["", [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     subject: ["", Validators.required],
     inquiry: ["", Validators.required],
   });
@@ -81,10 +65,13 @@ export class ContactComponent implements OnInit, AfterViewInit {
     return this.contactForm.get("inquiry");
   }
 
-  submitForm(event: Event): void {
-    if (this.contactForm.status === "INVALID")
-      return alert("Fields are empty, please try again");
-    this.contactService.submitContactForm(event);
+  async submitForm(event: Event): Promise<void> {
+    if (this.contactForm.status === "INVALID") return alert("Fields are empty, please try again");
+    const response = await this.contactService.submitContactForm(event);
+    console.log(response);
+    if (response.status !== 200) {
+      return alert("Something went wrong sending your message, \n please email me directly at \n corderoleoncruzp@gmail.com");
+    }
     this.contactForm.reset();
     this.formSent = true;
   }

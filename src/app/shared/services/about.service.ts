@@ -52,6 +52,10 @@ export class AboutService {
       imageLink: TechImageLink.ExpressJS,
     },
     {
+      name: TechName.NestJS,
+      imageLink: TechImageLink.NestJS,
+    },
+    {
       name: TechName.React,
       imageLink: TechImageLink.React,
     },
