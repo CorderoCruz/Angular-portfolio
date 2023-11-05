@@ -7,9 +7,7 @@
         <div class="reach-me-content">
           <div class="email-section">
             <h4>Email</h4>
-            <a href="mailto:cruzcordero7600@gmail.com"
-              >cruzcordero7600@gmail.com</a
-            >
+            <a href="mailto:cruzcordero7600@gmail.com">cruzcordero7600@gmail.com</a>
           </div>
           <div class="phone-section">
             <h4>Phone</h4>
@@ -18,26 +16,9 @@
           <div class="icon-section">
             <h4>Other ways to reach me!</h4>
             <div class="icons">
-              <a #inboxIcon
-                ><fa-icon
-                  class="fa-xl"
-                  [icon]="faMessage"
-                  style="color: rgb(0, 0, 0)"
-                ></fa-icon
-              ></a>
+              <a #inboxIcon><fa-icon class="fa-xl" [icon]="faMessage" style="color: rgb(0, 0, 0)"></fa-icon></a>
               <a href="https://github.com/CorderoCruz" target="_blank"
-                ><fa-icon
-                  class="fa-xl"
-                  [icon]="faGithub"
-                  style="color: rgb(0, 0, 0)"
-                ></fa-icon
-              ></a>
-              <a href=""
-                ><fa-icon
-                  class="fa-xl"
-                  [icon]="faLinkedin"
-                  style="color: rgb(0, 0, 0)"
-                ></fa-icon
+                ><fa-icon class="fa-xl" [icon]="faGithub" style="color: rgb(0, 0, 0)"></fa-icon
               ></a>
             </div>
           </div>
@@ -47,13 +28,9 @@
         <h2>Send me a message!</h2>
         <span
           [style]="{
-            color:
-              contactForm.status === 'INVALID' ? 'rgb(255, 0, 0)' : 'green',
+            color: contactForm.status === 'INVALID' ? 'rgb(255, 0, 0)' : 'green',
             display:
-              (contactForm.touched &&
-                contactForm.status === 'INVALID' &&
-                name?.touched &&
-                name?.invalid) ||
+              (contactForm.touched && contactForm.status === 'INVALID' && name?.touched && name?.invalid) ||
               (email?.touched && email?.invalid) ||
               (subject?.touched && subject?.invalid) ||
               (inquiry?.touched && inquiry?.invalid)
@@ -75,10 +52,7 @@
               formControlName="name"
               placeholder="Please input name"
               [style]="{
-                'box-shadow':
-                  name?.touched && name?.invalid
-                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
-                    : 'var(--shadow)'
+                'box-shadow': name?.touched && name?.invalid ? '0 0 5px rgba(255, 0, 0, 0.5)' : 'var(--shadow)'
               }"
             />
           </div>
@@ -90,19 +64,12 @@
               formControlName="email"
               placeholder="Please input email"
               [style]="{
-                'box-shadow':
-                  email?.touched && email?.invalid
-                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
-                    : 'var(--shadow)'
+                'box-shadow': email?.touched && email?.invalid ? '0 0 5px rgba(255, 0, 0, 0.5)' : 'var(--shadow)'
               }"
             />
             <span
               *ngIf="email?.touched && email?.invalid && email?.errors?.['pattern']"
-              style="
-                color: rgb(255, 0, 0);
-                font-weight: lighter;
-                font-size: small;
-              "
+              style="color: rgb(255, 0, 0); font-weight: lighter; font-size: small"
             >
               Must be a valid email address
             </span>
@@ -115,10 +82,7 @@
               formControlName="subject"
               placeholder="Please input subject"
               [style]="{
-                'box-shadow':
-                  subject?.touched && subject?.invalid
-                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
-                    : 'var(--shadow)'
+                'box-shadow': subject?.touched && subject?.invalid ? '0 0 5px rgba(255, 0, 0, 0.5)' : 'var(--shadow)'
               }"
             />
           </div>
@@ -130,20 +94,13 @@
               formControlName="inquiry"
               placeholder="Please input inquiry"
               [style]="{
-                'box-shadow':
-                  inquiry?.touched && inquiry?.invalid
-                    ? '0 0 5px rgba(255, 0, 0, 0.5)'
-                    : 'var(--shadow)'
+                'box-shadow': inquiry?.touched && inquiry?.invalid ? '0 0 5px rgba(255, 0, 0, 0.5)' : 'var(--shadow)'
               }"
             ></textarea>
           </div>
           <button
             [style]="{
-              'background-color': formSent
-                ? 'green'
-                : contactForm.status !== 'INVALID'
-                ? 'black'
-                : 'rgba(128, 128, 128, 0.464)',
+              'background-color': formSent ? 'green' : contactForm.status !== 'INVALID' ? 'black' : 'rgba(128, 128, 128, 0.464)',
               color: 'white'
             }"
             [disabled]="contactForm.status == 'INVALID' || formSent"

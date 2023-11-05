@@ -6,7 +6,7 @@
   }"
 >
   <div class="image-container">
-    <a routerLink="/"><img [src]="imageSrc" alt="cruz logo home" /></a>
+    <a routerLink="/"><img src="https://corderocruz-portfolio.s3.amazonaws.com/Cruz-logos_black.png" alt="cruz logo home" /></a>
   </div>
 
   <nav id="navigation" [ngClass]="headerService.navBarActive ? 'active' : ''">
@@ -20,28 +20,10 @@
       >{{ link }}</a
     >
   </nav>
-  <div
-    *ngIf="headerService.navBarActive"
-    #backgroundNav
-    class="background-nav"
-    [ngClass]="headerService.navBarActive ? 'active' : ''"
-  ></div>
+  <div *ngIf="headerService.navBarActive" #backgroundNav class="background-nav" [ngClass]="headerService.navBarActive ? 'active' : ''"></div>
 
-  <button
-    [ngStyle]="{ color: menu }"
-    aria-controls="navigation"
-    (click)="toggleNav()"
-    [ariaExpanded]="headerService.navBarActive"
-  >
-    <fa-icon
-      class="fa-xl"
-      *ngIf="!headerService.navBarActive"
-      [icon]="faBars"
-    ></fa-icon>
-    <fa-icon
-      class="fa-xl"
-      *ngIf="headerService.navBarActive"
-      [icon]="faX"
-    ></fa-icon>
+  <button [ngStyle]="{ color: menu }" aria-controls="navigation" (click)="toggleNav()" [ariaExpanded]="headerService.navBarActive">
+    <fa-icon class="fa-xl" *ngIf="!headerService.navBarActive" [icon]="faBars"></fa-icon>
+    <fa-icon class="fa-xl" *ngIf="headerService.navBarActive" [icon]="faX"></fa-icon>
   </button>
 </header>

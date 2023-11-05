@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { map, Observable, switchMap } from "rxjs";
 import { Project } from "src/app/project.interface";
 import { Logo } from "src/app/shared/links/ImageReferences";
-import { HeaderService } from "src/app/shared/services/header.service";
 import { ProjectService } from "src/app/shared/services/project.service";
+import { BreakpointObserver } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-project",
@@ -11,23 +12,21 @@ import { ProjectService } from "src/app/shared/services/project.service";
   styleUrls: ["./project.component.css"],
 })
 export class ProjectComponent implements OnInit {
-  projectService: ProjectService = inject(ProjectService);
-  headerService: HeaderService = inject(HeaderService);
+  private projectService: ProjectService = inject(ProjectService);
+  private route = inject<ActivatedRoute>(ActivatedRoute);
+  private breakpointObserver = inject<BreakpointObserver>(BreakpointObserver);
 
-  //header styling
-  backgroundColor: string = "white";
-  imageSrc: string = Logo.BLACK;
-  linkColor: string = "black";
-  menu: string = "black";
-  boxShadow: boolean = true;
+  public isSM: Observable<boolean> = this.breakpointObserver.observe("(max-width: 900px)").pipe(map((value) => value.matches));
 
-  projectId: string =
-    location.pathname.split("/")[location.pathname.split("/").length - 1];
+  public backgroundColor: string = "white";
+  public imageSrc: string = Logo.BLACK;
+  public linkColor: string = "black";
+  public menu: string = "black";
+  public boxShadow: boolean = true;
 
-  _project: Observable<Project> = this.projectService._projects.pipe(
-    map(
-      (projects: Project[]) =>
-        projects.filter((project) => project.id === parseInt(this.projectId))[0]
+  public project$: Observable<Project> = this.route.params.pipe(
+    switchMap((param) =>
+      this.projectService.projects$.pipe(map((projects: Project[]) => projects.filter((project: Project) => project.id === parseInt(param["id"]))[0]))
     )
   );
 

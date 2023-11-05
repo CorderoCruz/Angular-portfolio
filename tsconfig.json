@@ -2,6 +2,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@content": ["src/app/content"]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

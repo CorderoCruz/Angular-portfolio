@@ -2,15 +2,14 @@
   <div class="project-content">
     <div
       class="project"
-      *ngFor="let project of projectService._projects | async"
+      *ngFor="let project of projectService.projects$ | async"
       (mouseenter)="hoveredProject(project.id)"
       (mouseleave)="hoveredProject(-1)"
       [style]="{
-        'background-color':
-          hovered === project.id ? 'white' : 'rgb(249, 249, 249)'
+        'background-color': hovered === project.id ? 'white' : 'rgb(249, 249, 249)'
       }"
     >
-      <div class="image-container">
+      <div class="image-container" *ngIf="project.title !== 'The Vanguard Group (Work Experience)'">
         <img [src]="project.images[0]" [alt]="project.images[0]" />
       </div>
       <div class="about-project">
@@ -21,8 +20,7 @@
           <a [routerLink]="'project/' + project.id"
             ><button
               [style]="{
-                'background-color':
-                  hovered === project.id ? 'black' : 'rgba(0, 0, 0, 0.828)'
+                'background-color': hovered === project.id ? 'black' : 'rgba(0, 0, 0, 0.828)'
               }"
             >
               Show more

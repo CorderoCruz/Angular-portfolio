@@ -1,37 +1,15 @@
 <div class="main-container">
-  <app-sidenav></app-sidenav>
-  <div class="header-container">
-    <app-header
-      [backgroundColor]="backgroundColor"
-      [imageSrc]="imageSrc"
-      [linkColor]="linkColor"
-      [menu]="menu"
-      [boxShadow]="boxShadow"
-    ></app-header>
-  </div>
+  <app-sidenav *ngIf="!(isSM | async); else header"></app-sidenav>
+  <ng-template #header class="header-container">
+    <app-header [backgroundColor]="backgroundColor" [imageSrc]="imageSrc" [linkColor]="linkColor" [menu]="menu" [boxShadow]="boxShadow"></app-header>
+  </ng-template>
   <div class="content">
-    <div class="project-container" *ngIf="_project | async as project">
+    <div class="project-container" *ngIf="project$ | async as project">
       <div class="project-content">
-        <div class="image-container">
-          <img [src]="project.images[0]" alt="{{ project.images[0] }}" />
-        </div>
         <h2 id="{{ project.id }}">{{ project.title }}</h2>
-        <p style="color: red">
-          {{
-            project.title === "Manolo Barbershop"
-              ? "*** If you are viewing the deployed site, give it some time to load as it is hosted on Heroku, thank you."
-              : ""
-          }}
-        </p>
         <div class="stack">
-          <img
-            class="tech-image"
-            *ngFor="let tech of project.technologies"
-            [src]="tech.imageLink"
-            [alt]="tech.imageLink"
-            title="{{ tech.name }}"
-          />
-          <a [href]="project.deployedLink">
+          <img class="tech-image" *ngFor="let tech of project.technologies" [src]="tech.imageLink" [alt]="tech.imageLink" title="{{ tech.name }}" />
+          <a *ngIf="project.deployedLink" [href]="project.deployedLink">
             <img
               class="tech-image link"
               src="https://img.icons8.com/ios-filled/50/null/airplane-take-off.png"
@@ -39,7 +17,7 @@
               title="Deployed link"
             />
           </a>
-          <a [href]="project.repository">
+          <a *ngIf="project.repository" [href]="project.repository">
             <img
               class="tech-image link"
               src="https://img.icons8.com/ios-filled/50/null/source-code.png"
@@ -50,19 +28,16 @@
         </div>
         <p>
           {{ project.description }}
+          <br />
         </p>
-        <br />
+
         <p>{{ project.responsibilities }}</p>
       </div>
 
-      <div class="gallery">
+      <div class="gallery" *ngIf="project.images.length">
         <div class="gallery-container">
           <h3 style="color: black; text-align: center">Gallery</h3>
-          <img
-            *ngFor="let image of project.images"
-            [src]="image"
-            alt="{{ image }}"
-          />
+          <img *ngFor="let image of project.images" [src]="image" alt="{{ image }}" />
         </div>
       </div>
     </div>
