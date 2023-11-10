@@ -1,13 +1,6 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  inject,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, ViewChild } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { Project } from "src/app/project.interface";
 import { Logo } from "src/app/shared/links/ImageReferences";
 import { ProjectService } from "src/app/shared/services/project.service";
 
@@ -18,7 +11,9 @@ import { ProjectService } from "src/app/shared/services/project.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
-  @ViewChild("img") images: ElementRef;
+  private projectService: ProjectService = inject(ProjectService);
+
+  public projects$: Observable<Project[]> = this.projectService.projects$;
 
   isIntersected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -27,8 +22,6 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   backgroundColor: string = "transperent";
   imageSrc: string = Logo.TRANSPARENT;
   linkColor: string = "black";
-
-  projectService: ProjectService = inject(ProjectService);
 
   hovered: number;
 

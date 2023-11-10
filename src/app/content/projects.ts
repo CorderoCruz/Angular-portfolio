@@ -34,3 +34,14 @@ export const portfolioContent = {
     "https://corderocruz-portfolio.s3.amazonaws.com/portfolio-project.png",
   ],
 };
+
+export const getFitContent = {
+  title: "Get Fit",
+  description: `<p><i>Get Fit</i> was created to help you achieve your fitness goals. Before I created Get Fit, I was using <i>My Fitness Pal</i> to calculate my daily
+                nutritional goals, but I noticed that it lacked the functionality to being able to input foods for upcoming days, which made it really difficult to
+                calculate my macros if I happen to be meal prepping for the week or even the next day. I created <i>Get Fit</i> to ease some of those pains of calculating
+                your macros by simply creating an entry with your food's macro information and selecting a date for which you know you might consume the entry whether it's same
+                day, or even if you missed a meal the day before, you can select the date you want to add the meal and just add it!</p>`,
+  responsibilities: `<p></p>`,
+  images: [``],
+};

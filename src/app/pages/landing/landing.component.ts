@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { Logo, Profile } from "src/app/shared/links/ImageReferences";
-import { HeaderService } from "src/app/shared/services/header.service";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Observable, map } from "rxjs";
 
 @Component({
   selector: "app-landing",
@@ -8,11 +9,12 @@ import { HeaderService } from "src/app/shared/services/header.service";
   styleUrls: ["./landing.component.css"],
 })
 export class LandingComponent implements OnInit {
-  constructor(public headerService: HeaderService) {}
-  cruzLogoWhite: string = Logo.WHITE;
-  profilePicture: string = Profile.REGULAR;
+  private breakpointObserver = inject<BreakpointObserver>(BreakpointObserver);
 
-  //inputs for header if screen is less than 900
+  public cruzLogoWhite: string = Logo.WHITE;
+  public profilePicture: string = Profile.REGULAR;
+
+  public isMD$: Observable<boolean> = this.breakpointObserver.observe("(max-width: 900px)").pipe(map((value) => value.matches));
 
   backgroundColor: string = "white";
   imageSrc: string = Logo.BLACK;

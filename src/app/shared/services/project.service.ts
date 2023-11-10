@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import { from, Observable, of } from "rxjs";
 import { Project } from "src/app/project.interface";
 import { TechImageLink } from "../links/stackReferences";
-import { portfolioContent, vanguardContent } from "@content";
+import { getFitContent, portfolioContent, vanguardContent } from "@content";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProjectService {
-  projects: Project[] = [
+  private projects: Project[] = [
     {
       id: 0,
       title: vanguardContent.title,
@@ -90,7 +90,42 @@ export class ProjectService {
       deployedLink: "https://cordero-cruz.web.app/",
       repository: "https://github.com/CorderoCruz/angular-portfolio",
     },
+    {
+      id: 2,
+      title: getFitContent.title,
+      description: getFitContent.description,
+      responsibilities: getFitContent.responsibilities,
+      technologies: [
+        {
+          name: "MongoDB",
+          imageLink: TechImageLink.MongoDB,
+        },
+        {
+          name: "NestJS",
+          imageLink: TechImageLink.NestJS,
+        },
+        {
+          name: "Angular2+",
+          imageLink: TechImageLink.Angular,
+        },
+        {
+          name: "NodeJS",
+          imageLink: TechImageLink.NodeJS,
+        },
+        {
+          name: "AWS",
+          imageLink: TechImageLink.AWS,
+        },
+        {
+          name: "Firebase",
+          imageLink: TechImageLink.Firebase,
+        },
+      ],
+      images: getFitContent.images,
+      deployedLink: "https://get-fit-45e8d.web.app/",
+      repository: "https://github.com/CorderoCruz/angular-portfolio",
+    },
   ];
 
-  projects$: Observable<Project[]> = of(this.projects);
+  public projects$: Observable<Project[]> = of(this.projects);
 }
