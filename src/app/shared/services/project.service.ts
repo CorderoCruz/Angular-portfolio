@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { from, Observable, of } from "rxjs";
 import { Project } from "src/app/project.interface";
-import { TechImageLink } from "../links/stackReferences";
+import { TechImageLink, TechName } from "../links/stackReferences";
 import { getFitContent, portfolioContent, vanguardContent } from "@content";
 
 @Injectable({
@@ -18,40 +18,48 @@ export class ProjectService {
       repository: "",
       technologies: [
         {
-          name: "NestJS",
+          name: TechName.NestJS,
           imageLink: TechImageLink.NestJS,
         },
         {
-          name: "TypeScript",
+          name: TechName.TypeScript,
           imageLink: TechImageLink.TypeScript,
         },
         {
-          name: "Angular",
+          name: TechName.Angular,
           imageLink: TechImageLink.Angular,
         },
         {
-          name: "NodeJS",
+          name: TechName.NodeJS,
           imageLink: TechImageLink.NodeJS,
         },
         {
-          name: "ExpressJS",
+          name: TechName.ExpressJS,
           imageLink: TechImageLink.ExpressJS,
         },
         {
-          name: "AWS",
+          name: TechName.AWS,
           imageLink: TechImageLink.AWS,
         },
         {
-          name: "Jest",
+          name: TechName.Jest,
           imageLink: TechImageLink.Jest,
         },
         {
-          name: "HTML5",
+          name: TechName.HTML5,
           imageLink: TechImageLink.HTML5,
         },
         {
-          name: "CSS",
+          name: TechName.CSS,
           imageLink: TechImageLink.CSS,
+        },
+        {
+          name: TechName.Jira,
+          imageLink: TechImageLink.Jira,
+        },
+        {
+          name: TechName.BitBucket,
+          imageLink: TechImageLink.BitBucket,
         },
       ],
     },
@@ -62,27 +70,27 @@ export class ProjectService {
       responsibilities: portfolioContent.responsibilities,
       technologies: [
         {
-          name: "MongoDB",
+          name: TechName.MongoDB,
           imageLink: TechImageLink.MongoDB,
         },
         {
-          name: "ExpressJS",
+          name: TechName.ExpressJS,
           imageLink: TechImageLink.ExpressJS,
         },
         {
-          name: "Angular2+",
+          name: TechName.Angular,
           imageLink: TechImageLink.Angular,
         },
         {
-          name: "NodeJS",
+          name: TechName.NodeJS,
           imageLink: TechImageLink.NodeJS,
         },
         {
-          name: "AWS",
+          name: TechName.AWS,
           imageLink: TechImageLink.AWS,
         },
         {
-          name: "Firebase",
+          name: TechName.Firebase,
           imageLink: TechImageLink.Firebase,
         },
       ],
@@ -97,27 +105,39 @@ export class ProjectService {
       responsibilities: getFitContent.responsibilities,
       technologies: [
         {
-          name: "MongoDB",
+          name: TechName.MongoDB,
           imageLink: TechImageLink.MongoDB,
         },
         {
-          name: "NestJS",
+          name: TechName.NestJS,
           imageLink: TechImageLink.NestJS,
         },
         {
-          name: "Angular2+",
+          name: TechName.Angular,
           imageLink: TechImageLink.Angular,
         },
         {
-          name: "NodeJS",
+          name: TechName.NodeJS,
           imageLink: TechImageLink.NodeJS,
         },
         {
-          name: "AWS",
+          name: TechName.HTML5,
+          imageLink: TechImageLink.HTML5,
+        },
+        {
+          name: TechName.CSS,
+          imageLink: TechImageLink.CSS,
+        },
+        {
+          name: TechName.Material,
+          imageLink: TechImageLink.Material,
+        },
+        {
+          name: TechName.AWS,
           imageLink: TechImageLink.AWS,
         },
         {
-          name: "Firebase",
+          name: TechName.Firebase,
           imageLink: TechImageLink.Firebase,
         },
       ],
