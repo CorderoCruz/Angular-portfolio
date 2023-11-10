@@ -2,7 +2,7 @@
   <div class="project-content">
     <div
       class="project"
-      *ngFor="let project of projectService.projects$ | async"
+      *ngFor="let project of projects$ | async"
       (mouseenter)="hoveredProject(project.id)"
       (mouseleave)="hoveredProject(-1)"
       [style]="{

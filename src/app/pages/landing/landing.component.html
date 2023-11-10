@@ -1,14 +1,8 @@
 <div class="main-container">
-  <app-sidenav class="nav"></app-sidenav>
-  <div class="header-container">
-    <app-header
-      [backgroundColor]="backgroundColor"
-      [imageSrc]="imageSrc"
-      [linkColor]="linkColor"
-      [menu]="menu"
-      [boxShadow]="boxShadow"
-    ></app-header>
-  </div>
+  <app-sidenav *ngIf="!(isMD$ | async); else header" class="nav"></app-sidenav>
+  <ng-template #header class="header-container">
+    <app-header [backgroundColor]="backgroundColor" [linkColor]="linkColor" [menu]="menu" [boxShadow]="boxShadow"></app-header>
+  </ng-template>
   <div class="content">
     <app-content-container></app-content-container>
   </div>
