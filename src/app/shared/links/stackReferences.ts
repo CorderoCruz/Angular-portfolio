@@ -1,4 +1,5 @@
 export enum TechImageLink {
+  Material = "https://img.icons8.com/color/48/material-ui.png",
   TypeScript = "https://img.icons8.com/color/48/null/typescript.png",
   JavaScript = "https://img.icons8.com/fluency/48/null/javascript.png",
   HTML5 = "https://img.icons8.com/arcade/64/null/html-5.png",
@@ -25,6 +26,7 @@ export enum TechImageLink {
 }
 
 export enum TechName {
+  Material = "Material",
   TypeScript = "TypeScript",
   JavaScript = "JavaScript",
   HTML5 = "HTML5",

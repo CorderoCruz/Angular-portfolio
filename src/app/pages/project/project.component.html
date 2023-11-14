@@ -1,8 +1,5 @@
 <div class="main-container">
-  <app-sidenav *ngIf="!(isSM | async); else header"></app-sidenav>
-  <ng-template #header class="header-container">
-    <app-header [backgroundColor]="backgroundColor" [imageSrc]="imageSrc" [linkColor]="linkColor" [menu]="menu" [boxShadow]="boxShadow"></app-header>
-  </ng-template>
+  <navigation></navigation>
   <div class="content">
     <div class="project-container" *ngIf="project$ | async as project">
       <div class="project-content">
@@ -13,8 +10,9 @@
             <img
               class="tech-image link"
               src="https://img.icons8.com/ios-filled/50/null/airplane-take-off.png"
-              alt="link to deployed sit"
-              title="Deployed link"
+              alt="Link to deployed site"
+              title="Deployed link for {{ project.title }}"
+              target="_blank"
             />
           </a>
           <a *ngIf="project.repository" [href]="project.repository">
@@ -22,16 +20,16 @@
               class="tech-image link"
               src="https://img.icons8.com/ios-filled/50/null/source-code.png"
               alt="link to github repository"
-              title="Github repository"
+              title="Github repository for {{ project.title }}"
+              target="_blank"
             />
           </a>
         </div>
-        <p>
-          {{ project.description }}
+        <p [innerHTML]="project.description">
           <br />
         </p>
 
-        <p>{{ project.responsibilities }}</p>
+        <p [innerHTML]="project.responsibilities"></p>
       </div>
 
       <div class="gallery" *ngIf="project.images.length">

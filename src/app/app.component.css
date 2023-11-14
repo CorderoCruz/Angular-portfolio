@@ -1,0 +1,40 @@
+.main-container {
+  height: 100vh;
+  display: flex;
+  color: white;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+a:hover {
+  transition: 1s;
+  text-decoration: underline;
+}
+
+.header-container {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .main-container {
+    height: auto;
+  }
+
+  .content {
+    height: auto;
+    overflow: hidden;
+  }
+
+  .header-container {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+  }
+}

@@ -1,12 +1,19 @@
 <div class="projects-container" id="projects">
-  <div class="project-content">
+  <div
+    class="project-content"
+    #slide
+    (mousedown)="mouseDown($event)"
+    (mouseup)="mouseUp()"
+    (mouseleave)="mouseLeave()"
+    (mousemove)="mouseMove($event)"
+  >
     <div
       class="project"
       *ngFor="let project of projects$ | async"
       (mouseenter)="hoveredProject(project.id)"
       (mouseleave)="hoveredProject(-1)"
       [style]="{
-        'background-color': hovered === project.id ? 'white' : 'rgb(249, 249, 249)'
+        'background-color': hovered() === project.id ? 'white' : 'rgb(249, 249, 249)'
       }"
     >
       <div class="image-container" *ngIf="project.title !== 'The Vanguard Group (Work Experience)'">
@@ -20,7 +27,7 @@
           <a [routerLink]="'project/' + project.id"
             ><button
               [style]="{
-                'background-color': hovered === project.id ? 'black' : 'rgba(0, 0, 0, 0.828)'
+                'background-color': hovered() === project.id ? 'black' : 'rgba(0, 0, 0, 0.828)'
               }"
             >
               Show more

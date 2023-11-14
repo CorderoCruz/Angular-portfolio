@@ -42,6 +42,15 @@ export const getFitContent = {
                 calculate my macros if I happen to be meal prepping for the week or even the next day. I created <i>Get Fit</i> to ease some of those pains of calculating
                 your macros by simply creating an entry with your food's macro information and selecting a date for which you know you might consume the entry whether it's same
                 day, or even if you missed a meal the day before, you can select the date you want to add the meal and just add it!</p>`,
-  responsibilities: `<p></p>`,
-  images: [``],
+  responsibilities: `<p>The focus of this project was not to make the best looking application but rather an application that can actually help someone out throughout their fitness
+                    journey or even just their day to day, but that does not mean I am stopping here in terms of UI/UX. I plan on making it a little less dependent on Angular Material
+                    and sort of make it my own, although it has been fun working with the styling library. Initially, this project was hosted on Firebase and used a Firebase database,
+                    I learned a little bit of things from it as far as real-time data coming in and out of the database into the application, but I realized that in the future, I may 
+                    need to scale it with something I am more familiar so I made the decision to migrate the database into a MongoDB cluster.</p>`,
+  images: [
+    `https://corderocruz-portfolio.s3.amazonaws.com/get-fit-start.PNG`,
+    `https://corderocruz-portfolio.s3.amazonaws.com/get-fit-add-entry.PNG`,
+    `https://corderocruz-portfolio.s3.amazonaws.com/get-fit-edit-entry.PNG`,
+    `https://corderocruz-portfolio.s3.amazonaws.com/get-fit-add-meanl.PNG`,
+  ],
 };

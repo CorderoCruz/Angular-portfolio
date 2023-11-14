@@ -1,9 +1,6 @@
-<div class="main-container">
-  <app-sidenav *ngIf="!(isMD$ | async); else header" class="nav"></app-sidenav>
-  <ng-template #header class="header-container">
-    <app-header [backgroundColor]="backgroundColor" [linkColor]="linkColor" [menu]="menu" [boxShadow]="boxShadow"></app-header>
-  </ng-template>
-  <div class="content">
-    <app-content-container></app-content-container>
-  </div>
+<div class="content-container">
+  <app-intro></app-intro>
+  <app-about></app-about>
+  <app-projects></app-projects>
+  <app-contact></app-contact>
 </div>
