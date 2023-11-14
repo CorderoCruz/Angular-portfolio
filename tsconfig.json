@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@content": ["src/app/content"]
+      "@content": ["src/app/shared/content"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

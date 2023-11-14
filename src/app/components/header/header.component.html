@@ -1,7 +1,7 @@
 <header
   [style]="{
-    'background-color': backgroundColor,
-    'box-shadow': boxShadow ? '0 0 5px rgba(0, 0, 0, 0.193)' : 'none',
+    'background-color': 'white',
+    'box-shadow': '0 0 5px rgba(0, 0, 0, 0.193)',
     top: headerService.displayNavbar ? '0px' : '-12vh',
   }"
 >
@@ -13,7 +13,7 @@
     <a
       *ngFor="let link of headerService.links"
       (click)="linkClicked()"
-      [ngStyle]="{ color: linkColor }"
+      [ngStyle]="{ color: 'black' }"
       class="link"
       [ariaHidden]="navbarActive"
       [href]="link !== 'Blog' ? '#' + link.toLowerCase() : '/blog'"
@@ -22,7 +22,7 @@
   </nav>
   <div *ngIf="navbarActive" #backgroundNav class="background-nav" [ngClass]="navbarActive ? 'active' : ''"></div>
 
-  <button [ngStyle]="{ color: menu }" aria-controls="navigation" (click)="toggleNav()" [ariaExpanded]="navbarActive">
+  <button [ngStyle]="{ color: 'black' }" aria-controls="navigation" (click)="toggleNav()" [ariaExpanded]="navbarActive">
     <fa-icon class="fa-xl" *ngIf="!navbarActive" [icon]="faBars"></fa-icon>
     <fa-icon class="fa-xl" *ngIf="navbarActive" [icon]="faX"></fa-icon>
   </button>

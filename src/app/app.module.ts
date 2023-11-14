@@ -8,16 +8,16 @@ import { HeaderComponent } from "./components/header/header.component";
 import { LandingComponent } from "./pages/landing/landing.component";
 
 import { BlogComponent } from "./pages/blog/blog.component";
-import { AboutComponent } from "./pages/about/about.component";
-import { ProjectsComponent } from "./pages/projects/projects.component";
-import { ContactComponent } from "./pages/contact/contact.component";
+import { AboutComponent } from "./components/about/about.component";
+import { ProjectsComponent } from "./components/projects/projects.component";
+import { ContactComponent } from "./components/contact/contact.component";
 import { ReactiveFormsModule } from "@angular/forms";
-import { ContentContainerComponent } from "./components/content-container/content-container.component";
-import { IntroComponent } from "./pages/intro/intro.component";
+import { IntroComponent } from "./components/intro/intro.component";
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { ProjectComponent } from "./pages/project/project.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { LazyLoadingDirective } from "./lazy-loading.directive";
+import { NavigationComponent } from "./components/navigation/navigation.components";
 
 const routes: Routes = [
   {
@@ -28,7 +28,10 @@ const routes: Routes = [
     path: "project/:id",
     component: ProjectComponent,
   },
-  { path: "blog", component: BlogComponent },
+  {
+    path: "blog",
+    component: BlogComponent,
+  },
 
   {
     path: "**",
@@ -49,8 +52,8 @@ const routes: Routes = [
     AboutComponent,
     ProjectsComponent,
     ContactComponent,
-    ContentContainerComponent,
     IntroComponent,
+    NavigationComponent,
     SidenavComponent,
     ProjectComponent,
     NotFoundComponent,

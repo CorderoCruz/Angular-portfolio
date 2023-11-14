@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { from, Observable, of } from "rxjs";
 import { Project } from "src/app/project.interface";
 import { TechImageLink, TechName } from "../links/stackReferences";
-import { getFitContent, portfolioContent, vanguardContent } from "@content";
+import { getFitContent, portfolioContent, vanguardContent } from "src/app/shared/content";
 
 @Injectable({
   providedIn: "root",
@@ -65,41 +65,6 @@ export class ProjectService {
     },
     {
       id: 1,
-      title: portfolioContent.title,
-      description: portfolioContent.description,
-      responsibilities: portfolioContent.responsibilities,
-      technologies: [
-        {
-          name: TechName.MongoDB,
-          imageLink: TechImageLink.MongoDB,
-        },
-        {
-          name: TechName.ExpressJS,
-          imageLink: TechImageLink.ExpressJS,
-        },
-        {
-          name: TechName.Angular,
-          imageLink: TechImageLink.Angular,
-        },
-        {
-          name: TechName.NodeJS,
-          imageLink: TechImageLink.NodeJS,
-        },
-        {
-          name: TechName.AWS,
-          imageLink: TechImageLink.AWS,
-        },
-        {
-          name: TechName.Firebase,
-          imageLink: TechImageLink.Firebase,
-        },
-      ],
-      images: portfolioContent.images,
-      deployedLink: "https://cordero-cruz.web.app/",
-      repository: "https://github.com/CorderoCruz/angular-portfolio",
-    },
-    {
-      id: 2,
       title: getFitContent.title,
       description: getFitContent.description,
       responsibilities: getFitContent.responsibilities,
@@ -143,6 +108,41 @@ export class ProjectService {
       ],
       images: getFitContent.images,
       deployedLink: "https://get-fit-45e8d.web.app/",
+      repository: "https://github.com/CorderoCruz/angular-portfolio",
+    },
+    {
+      id: 2,
+      title: portfolioContent.title,
+      description: portfolioContent.description,
+      responsibilities: portfolioContent.responsibilities,
+      technologies: [
+        {
+          name: TechName.MongoDB,
+          imageLink: TechImageLink.MongoDB,
+        },
+        {
+          name: TechName.ExpressJS,
+          imageLink: TechImageLink.ExpressJS,
+        },
+        {
+          name: TechName.Angular,
+          imageLink: TechImageLink.Angular,
+        },
+        {
+          name: TechName.NodeJS,
+          imageLink: TechImageLink.NodeJS,
+        },
+        {
+          name: TechName.AWS,
+          imageLink: TechImageLink.AWS,
+        },
+        {
+          name: TechName.Firebase,
+          imageLink: TechImageLink.Firebase,
+        },
+      ],
+      images: portfolioContent.images,
+      deployedLink: "https://cordero-cruz.web.app/",
       repository: "https://github.com/CorderoCruz/angular-portfolio",
     },
   ];

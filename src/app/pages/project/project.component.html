@@ -1,8 +1,5 @@
 <div class="main-container">
-  <app-sidenav *ngIf="!(isSM | async); else header"></app-sidenav>
-  <ng-template #header class="header-container">
-    <app-header [backgroundColor]="backgroundColor" [imageSrc]="imageSrc" [linkColor]="linkColor" [menu]="menu" [boxShadow]="boxShadow"></app-header>
-  </ng-template>
+  <navigation></navigation>
   <div class="content">
     <div class="project-container" *ngIf="project$ | async as project">
       <div class="project-content">
