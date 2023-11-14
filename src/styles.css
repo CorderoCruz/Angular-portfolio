@@ -16,11 +16,12 @@
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #00000056 #ffffff00;
+  scrollbar-color: #ffffff56 #ffffff00;
 }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
+  position: absolute;
   width: 7px;
   height: 5px;
 }
@@ -30,7 +31,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #00000047;
+  background-color: #ffffff47;
   border-radius: 10px;
   border: none;
 }
@@ -38,10 +39,4 @@
 html {
   overflow: overlay;
   scroll-behavior: smooth;
-}
-
-@media (max-width: 900px) {
-  html {
-    scroll-padding-top: 7vh;
-  }
 }

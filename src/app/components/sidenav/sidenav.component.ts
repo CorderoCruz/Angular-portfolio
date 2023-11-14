@@ -8,13 +8,13 @@ import { HeaderService } from "src/app/shared/services/header.service";
   styleUrls: ["./sidenav.component.css"],
 })
 export class SidenavComponent {
-  headerService: HeaderService = inject(HeaderService);
+  private headerService = inject<HeaderService>(HeaderService);
 
-  cruzLogoTransparent: string = Logo.TRANSPARENT;
+  public cruzLogoTransparent: string = Logo.TRANSPARENT;
+  public activeLinkUnderline: WritableSignal<string> = signal("");
+  public links: string[] = this.headerService.links;
 
-  activeLinkUnderline: WritableSignal<string> = signal("");
-
-  activeLink(link: string): void {
+  public activeLink(link: string): void {
     const line: string = link.toLocaleLowerCase();
 
     switch (line) {
@@ -33,11 +33,9 @@ export class SidenavComponent {
     }
   }
 
-  isLinkOut: WritableSignal<boolean> = signal(false);
+  public isLinkOut: WritableSignal<boolean> = signal(false);
 
-  mouseOver() {
+  public mouseOver() {
     this.isLinkOut.set(this.isLinkOut() ? false : true);
   }
-
-  setObeservable() {}
 }

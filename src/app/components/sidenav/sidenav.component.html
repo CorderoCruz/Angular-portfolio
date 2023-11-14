@@ -4,19 +4,10 @@
       <img [src]="cruzLogoTransparent" alt="Logo for portfolio" />
     </a>
   </div>
-  <div
-    class="links-container"
-    (mouseenter)="mouseOver()"
-    (mouseleave)="mouseOver()"
-  >
-    <div
-      class="line"
-      [class]="isLinkOut() ? 'show' : 'hide'"
-      [style]="{ top: activeLinkUnderline() }"
-      *ngIf="activeLinkUnderline()"
-    ></div>
+  <div class="links-container" (mouseenter)="mouseOver()" (mouseleave)="mouseOver()">
+    <div class="line" *ngIf="activeLinkUnderline()" [class]="isLinkOut() ? 'show' : 'hide'" [style]="{ top: activeLinkUnderline() }"></div>
     <a
-      *ngFor="let link of headerService.links"
+      *ngFor="let link of links"
       [href]="link !== 'Blog' ? '#' + link.toLowerCase() : '/blog'"
       (mouseenter)="activeLink(link)"
       (click)="activeLink(link)"

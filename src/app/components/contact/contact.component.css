@@ -1,10 +1,19 @@
 .contact-container {
   width: 100%;
-  padding: 5vh 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+.contact-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: black;
+  padding: 5vh 0;
 }
 
 .content-container {

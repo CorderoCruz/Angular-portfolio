@@ -15,10 +15,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.header-container {
-  display: none;
-}
-
 @media (max-width: 900px) {
   .main-container {
     height: auto;
@@ -27,13 +23,5 @@ a:hover {
   .content {
     height: auto;
     overflow: hidden;
-  }
-
-  .header-container {
-    display: block;
-  }
-
-  .nav {
-    display: none;
   }
 }

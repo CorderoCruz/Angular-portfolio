@@ -44,7 +44,7 @@ export class ProjectsComponent {
     this.slide.nativeElement.scrollLeft = this.scrollLeft - walk;
   }
 
-  hoveredProject(projectId: number): void {
+  public hoveredProject(projectId: number): void {
     this.hovered.set(projectId);
   }
 }
