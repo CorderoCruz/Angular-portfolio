@@ -34,7 +34,7 @@
       <div class="gallery" *ngIf="project.images.length">
         <div class="gallery-container">
           <h3 style="color: black; text-align: center">Gallery</h3>
-          <img *ngFor="let image of project.images" [src]="image" alt="{{ image }}" />
+          <img *ngFor="let image of project.images" [src]="image" [alt]="image" />
         </div>
       </div>
     </div>

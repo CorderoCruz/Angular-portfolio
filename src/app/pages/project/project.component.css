@@ -1,6 +1,5 @@
 .main-container {
   max-height: 100vh;
-  width: 100vw;
   display: flex;
   color: white;
   overflow: hidden;
